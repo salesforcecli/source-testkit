@@ -10,7 +10,7 @@
 import * as path from 'path';
 import * as os from 'os';
 import * as fg from 'fast-glob';
-import { exec } from 'shelljs';
+import { exec, find, mv, rm } from 'shelljs';
 import { TestSession, execCmd } from '@salesforce/cli-plugins-testkit';
 import { Env, set } from '@salesforce/kit';
 import { AnyJson, Dictionary, ensureString, JsonMap, Nullable } from '@salesforce/ts-types';
@@ -357,6 +357,22 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       }
     }
     await this.writeMaxRevision(maxRevision);
+  }
+
+  public isSourcePlugin(): boolean {
+    return !!this.executable?.endsWith(`${path.sep}bin${path.sep}run`);
+  }
+
+  // SDR does not output the package.xml in the same location as toolbelt
+  // so we have to find it within the output dir, move it, and delete the
+  // generated dir.
+  public findAndMoveManifest(dir: string): void {
+    const manifest = find(dir).filter((file) => file.endsWith('package.xml'));
+    if (!manifest?.length) {
+      throw Error(`Did not find package.xml within ${dir}`);
+    }
+    mv(manifest[0], path.join(process.cwd()));
+    rm('-rf', dir);
   }
 
   protected async init(): Promise<void> {
