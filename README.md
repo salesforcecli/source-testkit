@@ -1,5 +1,4 @@
-[![NPM](https://img.shields.io/npm/v/@salesforce/source-testkit.svg)](https://www.npmjs.com/package/@salesforce/source-testkit)
-[![CircleCI](https://circleci.com/gh/salesforcecli/source-testkit.svg?style=svg&circle-token=2377ca31221869e9d13448313620486da80e595f)](https://circleci.com/gh/salesforcecli/source-testkit)
+[![NPM](https://img.shields.io/npm/v/@salesforce/source-testkit.svg?label=@salesforce/source-testkit)](https://www.npmjs.com/package/@salesforce/source-testkit) [![CircleCI](https://circleci.com/gh/salesforcecli/source-testkit/tree/main.svg?style=shield)](https://circleci.com/gh/salesforcecli/source-testkit/tree/main) [![Downloads/week](https://img.shields.io/npm/dw/@salesforce/source-testkit.svg)](https://npmjs.org/package/@salesforce/source-testkit) [![License](https://img.shields.io/badge/License-BSD%203--Clause-brightgreen.svg)](https://raw.githubusercontent.com/salesforcecli/source-testkit/main/LICENSE.txt)
 
 # Description
 
