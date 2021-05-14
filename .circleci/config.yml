@@ -19,15 +19,11 @@ workflows:
       - release-management/test-package:
           node_version: '12'
           name: node-12
-      - release-management/test-package:
-          node_version: '10'
-          name: node-10
       - release-management/release-package:
           requires:
             - node-latest
             - node-14
             - node-12
-            - node-10
           filters:
             branches:
               only: main
