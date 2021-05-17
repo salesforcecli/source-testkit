@@ -5,6 +5,7 @@
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
 
+import { ensureString } from '@salesforce/ts-types';
 import { Context, SourceMember } from './types';
 
 /**
@@ -21,10 +22,10 @@ export class ExecutionLog {
    * Add a command to the execution log
    */
   public async add(cmd: string): Promise<void> {
-    const baseCmd = cmd.split(' ')[0];
+    const baseCmd = ensureString(Object.values(this.context.commands).find((c) => cmd.startsWith(c)));
     const existingEntries = this.log.get(baseCmd) || [];
     const sourceMembers =
-      baseCmd.includes('force:source:deploy') || baseCmd.includes('force:source:push')
+      baseCmd.includes(this.context.commands.deploy) || baseCmd.includes(this.context.commands.push)
         ? await this.querySourceMembers()
         : [];
     const newEntry = {

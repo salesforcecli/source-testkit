@@ -13,7 +13,7 @@ import * as fg from 'fast-glob';
 import { Connection, fs } from '@salesforce/core';
 import { MetadataResolver } from '@salesforce/source-deploy-retrieve';
 import { debug, Debugger } from 'debug';
-import { ApexClass, ApexTestResult, Context, SourceMember, SourceState, StatusResult } from './types';
+import { ApexClass, ApexTestResult, Commands, Context, SourceMember, SourceState, StatusResult } from './types';
 import { ExecutionLog } from './executionLog';
 import { countFiles, FileTracker } from './fileTracker';
 
@@ -32,10 +32,12 @@ export class Assertions {
   private metadataResolver: MetadataResolver;
   private projectDir: string;
   private connection: Nullable<Connection>;
+  private commands: Commands;
 
   public constructor(context: Context, private executionLog: ExecutionLog, private fileTracker: FileTracker) {
     this.projectDir = context.projectDir;
     this.connection = context.connection;
+    this.commands = context.commands;
     this.debug = debug(`assertions:${context.nut}`);
     this.metadataResolver = new MetadataResolver();
   }
@@ -95,7 +97,7 @@ export class Assertions {
   public async filesToBeDeployed(
     globs: string[],
     ignore: string[] = [],
-    deployCommand = 'force:source:deploy'
+    deployCommand = this.commands.deploy
   ): Promise<void> {
     await this.filesToBeUpdated(globs, ignore, deployCommand);
   }
@@ -106,7 +108,7 @@ export class Assertions {
   public async filesToNotBeDeployed(
     globs: string[],
     ignore: string[] = [],
-    deployCommand = 'force:source:deploy'
+    deployCommand = this.commands.deploy
   ): Promise<void> {
     await this.filesToNotBeUpdated(globs, ignore, deployCommand);
   }
@@ -115,7 +117,7 @@ export class Assertions {
    * Finds all files in project based on the provided globs and expects SOME of them to NOT be updated on the server.
    * This is helpful for testing force:source:deploy:cancel where we can know beforehand which files will be deployed.
    */
-  public async someFilesToNotBeDeployed(globs: string[], deployCommand = 'force:source:deploy'): Promise<void> {
+  public async someFilesToNotBeDeployed(globs: string[], deployCommand = this.commands.deploy): Promise<void> {
     await this.someFilesToNotBeUpdated(globs, deployCommand);
   }
 
@@ -198,7 +200,7 @@ export class Assertions {
    * Expect all given files to be be updated in the org
    */
   public async filesToBePushed(globs: string[]): Promise<void> {
-    await this.filesToBeUpdated(globs, [], 'force:source:push');
+    await this.filesToBeUpdated(globs, [], this.commands.push);
   }
 
   /**
@@ -264,7 +266,7 @@ export class Assertions {
    * Expect no apex tests to be run
    */
   public async noApexTestsToBeRun(): Promise<void> {
-    const executionTimestamp = this.executionLog.getLatestTimestamp('force:source:deploy');
+    const executionTimestamp = this.executionLog.getLatestTimestamp(this.commands.deploy);
     const testResults = await this.retrieveApexTestResults();
     const testsRunAfterTimestamp = testResults.filter((r) => new Date(r.TestTimestamp) > executionTimestamp);
     expect(testsRunAfterTimestamp.length, 'no tests to be run during deploy').to.equal(0);
@@ -274,7 +276,7 @@ export class Assertions {
    * Expect some apex tests to be run
    */
   public async apexTestsToBeRun(): Promise<void> {
-    const executionTimestamp = this.executionLog.getLatestTimestamp('force:source:deploy');
+    const executionTimestamp = this.executionLog.getLatestTimestamp(this.commands.deploy);
     const testResults = await this.retrieveApexTestResults();
     const testsRunAfterTimestamp = testResults.filter((r) => new Date(r.TestTimestamp) > executionTimestamp);
     expect(testsRunAfterTimestamp.length, 'tests to be run during deploy').to.be.greaterThan(0);
@@ -286,7 +288,7 @@ export class Assertions {
   public async specificApexTestsToBeRun(classNames: string[]): Promise<void> {
     const apexClasses = await this.retrieveApexClasses(classNames);
     const classIds = apexClasses.map((c) => c.Id);
-    const executionTimestamp = this.executionLog.getLatestTimestamp('force:source:deploy');
+    const executionTimestamp = this.executionLog.getLatestTimestamp(this.commands.deploy);
     const testResults = await this.retrieveApexTestResults();
     const testsRunAfterTimestamp = testResults.filter((r) => {
       return new Date(r.TestTimestamp) > executionTimestamp && classIds.includes(r.ApexClassId);
