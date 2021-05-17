@@ -55,8 +55,8 @@ context('Deploy from source path NUT', () => {
 
   describe('--sourcepath flag', () => {
     it(`should deploy force-app`, async () => {
-      await sourceTestkit.deploy({ args: `--sourcepath force-app` });
-      await sourceTestkit.expect.filesToBeDeployed('force-app/**/*');
+      await sourceTestkit.deploy({ args: '--sourcepath force-app' });
+      await sourceTestkit.expect.filesToBeDeployed(['force-app/**/*']);
     });
 
     it('should throw an error if the sourcepath is not valid', async () => {

@@ -10,7 +10,7 @@
 import * as path from 'path';
 import * as os from 'os';
 import * as fg from 'fast-glob';
-import { exec, find, mv, rm } from 'shelljs';
+import { exec, find, mv, rm, which } from 'shelljs';
 import { TestSession, execCmd } from '@salesforce/cli-plugins-testkit';
 import { Env, set } from '@salesforce/kit';
 import { AnyJson, Dictionary, ensureString, JsonMap, Nullable } from '@salesforce/ts-types';
@@ -18,7 +18,7 @@ import { AuthInfo, Connection, fs, NamedPackageDir, SfdxProject } from '@salesfo
 import { AsyncCreatable } from '@salesforce/kit';
 import { debug, Debugger } from 'debug';
 import { MetadataResolver } from '@salesforce/source-deploy-retrieve';
-import { Result, StatusResult } from './types';
+import { Commands, Result, StatusResult } from './types';
 import { Assertions } from './assertions';
 import { ExecutionLog } from './executionLog';
 import { FileTracker, traverseForFiles } from './fileTracker';
@@ -45,6 +45,8 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     exitCode: 0,
     args: '',
   };
+  private static LocalDevPath = path.join('bin', 'dev');
+  private static LocalProdPath = path.join('bin', 'run');
 
   public packages!: NamedPackageDir[];
   public packageNames!: string[];
@@ -55,9 +57,10 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   public testMetadataFolder!: string;
   public testMetadataFiles!: string[];
 
+  private commands!: Commands;
   private connection: Nullable<Connection>;
   private debug: Debugger;
-  private executable: Nullable<string>;
+  private executable: string;
   private fileTracker!: FileTracker;
   private repository: string;
   private session!: TestSession;
@@ -69,7 +72,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
 
   public constructor(options: SourceTestkit.Options) {
     super(options);
-    this.executable = options.executable;
+    this.executable = options.executable || which('sfdx').stdout;
     this.repository = options.repository;
     this.orgless = !!options.orgless;
     this.nut = path.basename(options.nut);
@@ -95,49 +98,49 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    * Executes force:source:deploy
    */
   public async deploy(options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Result<{ id: string }>> {
-    return this.execute<{ id: string }>('force:source:deploy', options);
+    return this.execute<{ id: string }>(this.getCommandString('deploy'), options);
   }
 
   /**
    * Executes force:source:deploy:report
    */
   public async deployReport(options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Result<{ id: string }>> {
-    return this.execute<{ id: string }>('force:source:deploy:report', options);
+    return this.execute<{ id: string }>(this.getCommandString('deployReport'), options);
   }
 
   /**
    * Executes force:source:deploy:cancel
    */
   public async deployCancel(options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Result<{ id: string }>> {
-    return this.execute<{ id: string }>('force:source:deploy:cancel', options);
+    return this.execute<{ id: string }>(this.getCommandString('deployCancel'), options);
   }
 
   /**
    * Executes force:source:retrieve
    */
   public async retrieve(options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Result> {
-    return this.execute('force:source:retrieve', options);
+    return this.execute(this.getCommandString('retrieve'), options);
   }
 
   /**
    * Executes force:source:push
    */
   public async push(options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Result> {
-    return this.execute('force:source:push', options);
+    return this.execute(this.getCommandString('push'), options);
   }
 
   /**
    * Executes force:source:pull
    */
   public async pull(options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Result> {
-    return this.execute('force:source:pull', options);
+    return this.execute(this.getCommandString('pull'), options);
   }
 
   /**
    * Executes force:source:status
    */
   public async status(options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Result<StatusResult>> {
-    return this.execute<StatusResult>('force:source:status', options);
+    return this.execute<StatusResult>(this.getCommandString('status'), options);
   }
 
   /**
@@ -282,21 +285,21 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   /**
    * Modify files found by given globs
    */
-  public async modifyLocalGlobs(globs: string[]): Promise<void> {
+  public async modifyLocalGlobs(globs: string[], append = os.EOL): Promise<void> {
     const allFiles = await this.doGlob(globs);
 
     for (const file of allFiles) {
-      await this.modifyLocalFile(path.normalize(file));
+      await this.modifyLocalFile(path.normalize(file), append);
     }
   }
 
   /**
-   * Modify file by inserting a new line at the end of the file
+   * Modify file by appending to the end of the file. Defaults to appending a new line.
    */
-  public async modifyLocalFile(file: string): Promise<void> {
+  public async modifyLocalFile(file: string, append = os.EOL): Promise<void> {
     const fullPath = file.startsWith(this.projectDir) ? file : path.join(this.projectDir, file);
     let contents = await fs.readFile(fullPath, 'UTF-8');
-    contents += os.EOL;
+    contents += append;
     await fs.writeFile(fullPath, contents);
     await this.fileTracker.update(fullPath, 'modified file');
   }
@@ -338,6 +341,10 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     await this.trackFiles(this.testMetadataFiles);
   }
 
+  /**
+   * Spoof a remote change in the org by setting the lastRetrievedFromServer
+   * property in the local maxRevision.json to null
+   */
   public async spoofRemoteChange(globs: string[]): Promise<void> {
     const files = await this.doGlob(globs);
     const maxRevision = await this.readMaxRevision();
@@ -359,13 +366,22 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     await this.writeMaxRevision(maxRevision);
   }
 
-  public isSourcePlugin(): boolean {
-    return !!this.executable?.endsWith(`${path.sep}bin${path.sep}run`);
+  /**
+   * Returns true if the executable being used belongs to a local pacakage
+   */
+  public isLocalExecutable(): boolean {
+    return (
+      this.executable.endsWith(SourceTestkit.LocalDevPath) || this.executable.endsWith(SourceTestkit.LocalProdPath)
+    );
   }
 
-  // SDR does not output the package.xml in the same location as toolbelt
-  // so we have to find it within the output dir, move it, and delete the
-  // generated dir.
+  /**
+   * Move the manifest file to the current working directory.
+   *
+   * This is used because the SDR library does not output the package.xml
+   * in the same location as toolbelt so we have to find it within the output
+   * dir, move it, and delete the generated dir.
+   */
   public findAndMoveManifest(dir: string): void {
     const manifest = find(dir).filter((file) => file.endsWith('package.xml'));
     if (!manifest?.length) {
@@ -381,10 +397,11 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       ensureString(SourceTestkit.Env.getString('TESTKIT_JWT_CLIENT_ID'));
       ensureString(SourceTestkit.Env.getString('TESTKIT_HUB_INSTANCE'));
     }
-    if (this.executable) {
-      SourceTestkit.Env.setString('TESTKIT_EXECUTABLE_PATH', this.executable);
-    }
+
+    SourceTestkit.Env.setString('TESTKIT_EXECUTABLE_PATH', this.executable);
+
     try {
+      this.commands = await this.getCommandMapping();
       this.metadataResolver = new MetadataResolver();
       this.session = await this.createSession();
       this.projectDir = this.session.project!.dir;
@@ -399,6 +416,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
         connection: this.connection,
         projectDir: this.projectDir,
         nut: this.nut,
+        commands: this.commands,
       };
       this.fileTracker = new FileTracker(context);
       this.executionLog = new ExecutionLog(context);
@@ -409,6 +427,30 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
         .map((f) => f.replace(`${this.testMetadataFolder}${path.sep}`, ''));
     } catch (err) {
       await this.handleError(err, true);
+    }
+  }
+
+  private async getCommandMapping(): Promise<Commands> {
+    if (this.isLocalExecutable()) {
+      const npmPackagePath = this.executable
+        .replace(SourceTestkit.LocalProdPath, '')
+        .replace(SourceTestkit.LocalDevPath, '');
+      const pkgJsonPath = path.join(npmPackagePath, 'package.json');
+      const pkgJson = (await fs.readJsonMap(pkgJsonPath)) as { oclif: { bin: string } };
+      const key = pkgJson.oclif.bin as EXECUTABLE;
+      return COMMANDS[key];
+    } else {
+      const key = path.basename(this.executable) as EXECUTABLE;
+      return COMMANDS[key];
+    }
+  }
+
+  private getCommandString(cmdKey: string): string {
+    const cmd = this.commands[cmdKey];
+    if (cmd) {
+      return cmd;
+    } else {
+      throw new Error(`${cmdKey} command not implemented for executable ${this.executable}`);
     }
   }
 
@@ -516,3 +558,24 @@ export namespace SourceTestkit {
     args: string;
   };
 }
+
+export enum EXECUTABLE {
+  SFDX = 'sfdx',
+  SF = 'sf',
+}
+
+export const COMMANDS = {
+  [EXECUTABLE.SFDX]: {
+    deploy: 'force:source:deploy',
+    deployReport: 'force:source:deploy:report',
+    deployCancel: 'force:source:deploy:cancel',
+    retrieve: 'force:source:retrieve',
+    convert: 'force:source:convert',
+    push: 'force:source:push',
+    pull: 'force:source:pull',
+    status: 'force:source:status',
+  },
+  [EXECUTABLE.SF]: {
+    deploy: 'project deploy org',
+  },
+};

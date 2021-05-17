@@ -14,7 +14,10 @@ export type Context = {
   projectDir: string;
   connection: Nullable<Connection>;
   nut: string;
+  commands: Record<string, string>;
 };
+
+export type Commands = Record<string, string>;
 
 export type ApexTestResult = {
   TestTimestamp: string;
