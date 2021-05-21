@@ -170,6 +170,17 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   }
 
   /**
+   * Runs the permset:assign command with the passed in options
+   *
+   * @param options
+   */
+  public async assignPermissionSet(
+    options: Partial<SourceTestkit.CommandOpts> = {}
+  ): Promise<Result<{ success: [{ name: string; value: string }]; failures: [{ name: string; value: string }] }>> {
+    return await this.execute('force:user:permset:assign', options);
+  }
+
+  /**
    * Adds given files to FileTracker for tracking
    */
   public async trackFiles(files: string[]): Promise<void> {
@@ -574,6 +585,8 @@ export const COMMANDS = {
     push: 'force:source:push',
     pull: 'force:source:pull',
     status: 'force:source:status',
+    assign: 'force:user:permset:assign',
+    create: 'force:apex:class:create',
   },
   [EXECUTABLE.SF]: {
     deploy: 'project deploy org',
