@@ -22,7 +22,9 @@ export class ExecutionLog {
    * Add a command to the execution log
    */
   public async add(cmd: string): Promise<void> {
-    const baseCmd = ensureString(Object.values(this.context.commands).find((c) => cmd.startsWith(c)));
+    const baseCmd = ensureString(
+      Object.values(this.context.commands).find((c) => cmd.startsWith(c)) || cmd.split(' -')[0]
+    );
     const existingEntries = this.log.get(baseCmd) || [];
     const sourceMembers =
       baseCmd.includes(this.context.commands.deploy) || baseCmd.includes(this.context.commands.push)

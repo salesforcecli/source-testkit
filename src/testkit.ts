@@ -585,8 +585,6 @@ export const COMMANDS = {
     push: 'force:source:push',
     pull: 'force:source:pull',
     status: 'force:source:status',
-    assign: 'force:user:permset:assign',
-    create: 'force:apex:class:create',
   },
   [EXECUTABLE.SF]: {
     deploy: 'project deploy org',
