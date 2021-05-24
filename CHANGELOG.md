@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.4](https://github.com/salesforcecli/source-testkit/compare/v0.0.3...v0.0.4) (2021-05-24)
+
+
+### Bug Fixes
+
+* add assignPermissionSet, assign/create commands ([#3](https://github.com/salesforcecli/source-testkit/issues/3)) ([e423bba](https://github.com/salesforcecli/source-testkit/commit/e423bbae3acd217dd4708efad15af83996b0ff1e))
+
 ### [0.0.3](https://github.com/salesforcecli/source-testkit/compare/v0.0.2...v0.0.3) (2021-05-17)
 
 
