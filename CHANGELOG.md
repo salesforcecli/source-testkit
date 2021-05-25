@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/salesforcecli/source-testkit/compare/v0.0.4...v0.0.5) (2021-05-25)
+
+
+### Bug Fixes
+
+* convert Metadataresolver file paths to match glob results ([#4](https://github.com/salesforcecli/source-testkit/issues/4)) ([fb78972](https://github.com/salesforcecli/source-testkit/commit/fb789726cb15e436fc9dbe3e3647697a7027ac96))
+
 ### [0.0.4](https://github.com/salesforcecli/source-testkit/compare/v0.0.3...v0.0.4) (2021-05-24)
 
 
