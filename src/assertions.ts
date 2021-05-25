@@ -375,7 +375,8 @@ export class Assertions {
     const toTrack = all.filter((file) => !ignoreFiles.includes(file));
     const membersMap = new Map<string, Set<string>>();
     for (const file of toTrack) {
-      const components = this.metadataResolver.getComponentsFromPath(file);
+      // glob will return files with '/' as separators, this won't work on Windows
+      const components = this.metadataResolver.getComponentsFromPath(file.replace(/\//g, path.sep));
       for (const component of components) {
         const metadataType = component.type.name;
         const metadataName = component.fullName;
