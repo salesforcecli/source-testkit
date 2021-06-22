@@ -329,7 +329,9 @@ export class Assertions {
       const preCommandExecution = sourceMembers.find(
         (s) => s.MemberType === sourceMember.MemberType && s.MemberName === sourceMember.MemberName
       ) || { RevisionCounter: 0 };
-      expect(sourceMember.RevisionCounter, assertionMessage).to.be.greaterThan(preCommandExecution.RevisionCounter);
+      expect(sourceMember.RevisionCounter, assertionMessage).to.be.greaterThanOrEqual(
+        preCommandExecution.RevisionCounter
+      );
     }
   }
 
