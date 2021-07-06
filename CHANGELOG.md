@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/salesforcecli/source-testkit/compare/v0.0.5...v0.0.6) (2021-07-06)
+
+
+### Features
+
+* make execute method public ([3ff8eca](https://github.com/salesforcecli/source-testkit/commit/3ff8ecad8eeb8061ccaf3e8945f4126102c8c519))
+
 ### [0.0.5](https://github.com/salesforcecli/source-testkit/compare/v0.0.4...v0.0.5) (2021-05-25)
 
 
