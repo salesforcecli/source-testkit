@@ -44,6 +44,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   private static DefaultCmdOpts: SourceTestkit.CommandOpts = {
     exitCode: 0,
     args: '',
+    json: true,
   };
   private static LocalDevPath = path.join('bin', 'dev');
   private static LocalProdPath = path.join('bin', 'run');
@@ -56,6 +57,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   public expect!: Assertions;
   public testMetadataFolder!: string;
   public testMetadataFiles!: string[];
+  public username!: string;
 
   private commands!: Commands;
   private connection: Nullable<Connection>;
@@ -64,7 +66,6 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   private fileTracker!: FileTracker;
   private repository: string;
   private session!: TestSession;
-  private username!: string;
   private orgless: boolean;
   private executionLog!: ExecutionLog;
   private nut: string;
@@ -323,7 +324,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    * any metadata type with any name
    */
   public async modifyRemoteFile(): Promise<string> {
-    const result: Array<{ Id: string }> = (await this.connection?.tooling
+    const result: Array<{ Id?: string | undefined }> = (await this.connection?.tooling
       .sobject('QuickActionDefinition')
       .find({ DeveloperName: 'NutAction' }, ['ID']))!;
     const updateRequest = {
@@ -402,6 +403,41 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     rm('-rf', dir);
   }
 
+  /**
+   * Execute a command using testkit. Adds --json to every command to ensure json output.
+   */
+  public async execute<T = JsonMap>(
+    cmd: string,
+    options: Partial<SourceTestkit.CommandOpts> = {}
+  ): Promise<Nullable<Result<T>>> {
+    try {
+      const { args, exitCode, json } = Object.assign({}, SourceTestkit.DefaultCmdOpts, options);
+      const command = (json ? [cmd, args, '--json'] : [cmd, args]).join(' ');
+      this.debug(`${command} (expecting exit code: ${exitCode})`);
+      await this.fileTracker.updateAll(`PRE: ${command}`);
+      await this.executionLog.add(command);
+      const result = execCmd<T>(command, { ensureExitCode: exitCode });
+      await this.fileTracker.updateAll(`POST: ${command}`);
+
+      if (json) {
+        const jsonOutput = result.jsonOutput;
+        this.debug('%O', jsonOutput);
+        if (!jsonOutput) {
+          console.error(`${command} returned null jsonOutput`);
+          console.error(result);
+        } else {
+          this.expect.toHaveProperty(jsonOutput, 'status');
+          if (jsonOutput.status === 0) {
+            this.expect.toHaveProperty(jsonOutput, 'result');
+          }
+          return jsonOutput;
+        }
+      }
+    } catch (err) {
+      await this.handleError(err);
+    }
+  }
+
   protected async init(): Promise<void> {
     if (!SourceTestkit.Env.getString('TESTKIT_HUB_USERNAME') && !SourceTestkit.Env.getString('TESTKIT_AUTH_URL')) {
       ensureString(SourceTestkit.Env.getString('TESTKIT_JWT_KEY'));
@@ -462,39 +498,6 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       return cmd;
     } else {
       throw new Error(`${cmdKey} command not implemented for executable ${this.executable}`);
-    }
-  }
-
-  /**
-   * Execute a command using testkit. Adds --json to every command to ensure json output.
-   */
-  private async execute<T = JsonMap>(
-    cmd: string,
-    options: Partial<SourceTestkit.CommandOpts> = {}
-  ): Promise<Nullable<Result<T>>> {
-    try {
-      const { args, exitCode } = Object.assign({}, SourceTestkit.DefaultCmdOpts, options);
-      const command = [cmd, args, '--json'].join(' ');
-      this.debug(`${command} (expecting exit code: ${exitCode})`);
-      await this.fileTracker.updateAll(`PRE: ${command}`);
-      await this.executionLog.add(command);
-      const result = execCmd<T>(command, { ensureExitCode: exitCode });
-      await this.fileTracker.updateAll(`POST: ${command}`);
-
-      const json = result.jsonOutput;
-      this.debug('%O', json);
-      if (!json) {
-        console.error(`${command} returned null jsonOutput`);
-        console.error(result);
-      } else {
-        this.expect.toHaveProperty(json, 'status');
-        if (json.status === 0) {
-          this.expect.toHaveProperty(json, 'result');
-        }
-        return json;
-      }
-    } catch (err) {
-      await this.handleError(err);
     }
   }
 
@@ -567,6 +570,7 @@ export namespace SourceTestkit {
   export type CommandOpts = {
     exitCode: number;
     args: string;
+    json: boolean;
   };
 }
 
