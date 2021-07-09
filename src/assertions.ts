@@ -321,7 +321,7 @@ export class Assertions {
   }
 
   private async filesToBeUpdated(globs: string[], ignore: string[] = [], command: string): Promise<void> {
-    const { sourceMembers } = this.executionLog.getLatest(command);
+    const sourceMembers = this.executionLog.getLatest(command)?.sourceMembers || [];
     const latestSourceMembers = await this.retrieveSourceMembers(globs, ignore);
 
     for (const sourceMember of latestSourceMembers) {
@@ -334,7 +334,7 @@ export class Assertions {
   }
 
   private async filesToNotBeUpdated(globs: string[], ignore: string[] = [], command: string): Promise<void> {
-    const { sourceMembers } = this.executionLog.getLatest(command);
+    const sourceMembers = this.executionLog.getLatest(command)?.sourceMembers || [];
     const latestSourceMembers = await this.retrieveSourceMembers(globs, ignore);
     if (!latestSourceMembers.length) {
       // Not finding any source members based on the globs means that there is no SourceMember for those files
@@ -353,7 +353,7 @@ export class Assertions {
   }
 
   private async someFilesToNotBeUpdated(globs: string[], command: string): Promise<void> {
-    const { sourceMembers } = this.executionLog.getLatest(command);
+    const sourceMembers = this.executionLog.getLatest(command)?.sourceMembers || [];
     const latestSourceMembers = await this.retrieveSourceMembers(globs);
     const someAreNotUpdated = latestSourceMembers.some((sourceMember) => {
       const preCommandExecution = sourceMembers.find(

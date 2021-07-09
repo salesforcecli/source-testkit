@@ -50,7 +50,8 @@ export class ExecutionLog {
    * Return the most recent entry for a command
    */
   public getLatest(cmd: string): ExecutionLog.Details {
-    const sorted = this.log.get(cmd)!.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
+    const log = this.log.get(cmd) || [];
+    const sorted = log.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
     return sorted[0];
   }
 
