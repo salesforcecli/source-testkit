@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/salesforcecli/source-testkit/compare/v0.0.6...v0.0.7) (2021-07-09)
+
+
+### Bug Fixes
+
+* executionLog ([8ec172c](https://github.com/salesforcecli/source-testkit/commit/8ec172c07267a1d55e35807a6782e4d222ca246c))
+
 ### [0.0.6](https://github.com/salesforcecli/source-testkit/compare/v0.0.5...v0.0.6) (2021-07-06)
 
 
