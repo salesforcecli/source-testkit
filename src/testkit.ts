@@ -591,6 +591,6 @@ export const COMMANDS = {
     status: 'force:source:status',
   },
   [EXECUTABLE.SF]: {
-    deploy: 'project deploy org',
+    deploy: 'deploy metadata',
   },
 };
