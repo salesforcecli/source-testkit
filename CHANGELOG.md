@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/salesforcecli/source-testkit/compare/v0.0.7...v0.0.8) (2021-07-15)
+
+
+### Bug Fixes
+
+* rename sf project deploy ([5d3f52e](https://github.com/salesforcecli/source-testkit/commit/5d3f52ed742f57a15515606c2e543b9fd356c8ce))
+
 ### [0.0.7](https://github.com/salesforcecli/source-testkit/compare/v0.0.6...v0.0.7) (2021-07-09)
 
 
