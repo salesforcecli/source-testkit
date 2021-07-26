@@ -6,9 +6,11 @@
  */
 
 import { Connection } from '@salesforce/core';
-import { JsonMap, Nullable } from '@salesforce/ts-types';
+import { JsonCollection, JsonMap, Nullable } from '@salesforce/ts-types';
 
-export type Result<T = JsonMap> = Nullable<JsonMap & { status: number; result: T }>;
+export type SfdxResult<T = JsonMap> = Nullable<JsonMap & { status: number; result: T }>;
+export type SfResult<T = JsonCollection> = Nullable<T>;
+export type Result<T = JsonCollection> = SfdxResult<T> | SfResult<T>;
 
 export type Context = {
   projectDir: string;

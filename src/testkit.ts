@@ -12,13 +12,12 @@ import * as os from 'os';
 import * as fg from 'fast-glob';
 import { exec, find, mv, rm, which } from 'shelljs';
 import { TestSession, execCmd } from '@salesforce/cli-plugins-testkit';
-import { Env, set } from '@salesforce/kit';
-import { AnyJson, Dictionary, ensureString, JsonMap, Nullable } from '@salesforce/ts-types';
-import { AuthInfo, Connection, fs, NamedPackageDir, SfdxProject } from '@salesforce/core';
-import { AsyncCreatable } from '@salesforce/kit';
+import { AsyncCreatable, Env, set } from '@salesforce/kit';
+import { AnyJson, Dictionary, ensureString, get, JsonMap, Nullable } from '@salesforce/ts-types';
+import { AuthInfo, Config, Connection, fs, NamedPackageDir, SfdxProject } from '@salesforce/core';
 import { debug, Debugger } from 'debug';
 import { MetadataResolver } from '@salesforce/source-deploy-retrieve';
-import { Commands, Result, StatusResult } from './types';
+import { Commands, Result, SfdxResult, SfResult, StatusResult } from './types';
 import { Assertions } from './assertions';
 import { ExecutionLog } from './executionLog';
 import { FileTracker, traverseForFiles } from './fileTracker';
@@ -63,19 +62,22 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   private connection: Nullable<Connection>;
   private debug: Debugger;
   private executable: string;
+  private executableName!: Executable;
+  private executionLog!: ExecutionLog;
   private fileTracker!: FileTracker;
+  private metadataResolver!: MetadataResolver;
+  private nut: string;
+  private orgless: boolean;
   private repository: string;
   private session!: TestSession;
-  private orgless: boolean;
-  private executionLog!: ExecutionLog;
-  private nut: string;
-  private metadataResolver!: MetadataResolver;
+  private setupCommands: string[];
 
   public constructor(options: SourceTestkit.Options) {
     super(options);
     this.executable = options.executable || which('sfdx').stdout;
     this.repository = options.repository;
     this.orgless = !!options.orgless;
+    this.setupCommands = options.setupCommands || [];
     this.nut = path.basename(options.nut);
     this.debug = debug(`sourceTestkit:${this.nut}`);
   }
@@ -406,21 +408,21 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   /**
    * Execute a command using testkit. Adds --json to every command to ensure json output.
    */
-  public async execute<T = JsonMap>(
-    cmd: string,
-    options: Partial<SourceTestkit.CommandOpts> = {}
-  ): Promise<Nullable<Result<T>>> {
+  public async execute<T>(cmd: string, options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Nullable<Result<T>>> {
     try {
       const { args, exitCode, json } = Object.assign({}, SourceTestkit.DefaultCmdOpts, options);
       const command = (json ? [cmd, args, '--json'] : [cmd, args]).join(' ');
       this.debug(`${command} (expecting exit code: ${exitCode})`);
       await this.fileTracker.updateAll(`PRE: ${command}`);
       await this.executionLog.add(command);
-      const result = execCmd<T>(command, { ensureExitCode: exitCode });
+      const result =
+        this.executableName === Executable.SF
+          ? execCmd<T>(command, { ensureExitCode: exitCode, cli: 'sf' })
+          : execCmd<T>(command, { ensureExitCode: exitCode, cli: 'sfdx' });
       await this.fileTracker.updateAll(`POST: ${command}`);
 
-      if (json) {
-        const jsonOutput = result.jsonOutput;
+      if (json && this.executableName === Executable.SFDX) {
+        const jsonOutput = result.jsonOutput as SfdxResult<T>;
         this.debug('%O', jsonOutput);
         if (!jsonOutput) {
           console.error(`${command} returned null jsonOutput`);
@@ -430,8 +432,18 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
           if (jsonOutput.status === 0) {
             this.expect.toHaveProperty(jsonOutput, 'result');
           }
-          return jsonOutput;
         }
+        return jsonOutput;
+      }
+
+      if (json && this.executableName === Executable.SF) {
+        const jsonOutput = result.jsonOutput as SfResult<T>;
+        this.debug('%O', jsonOutput);
+        if (!jsonOutput) {
+          console.error(`${command} returned null jsonOutput`);
+          console.error(result);
+        }
+        return jsonOutput;
       }
     } catch (err) {
       await this.handleError(err);
@@ -448,7 +460,8 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     SourceTestkit.Env.setString('TESTKIT_EXECUTABLE_PATH', this.executable);
 
     try {
-      this.commands = await this.getCommandMapping();
+      this.executableName = await this.getExecutableName();
+      this.commands = COMMANDS[this.executableName];
       this.metadataResolver = new MetadataResolver();
       this.session = await this.createSession();
       this.projectDir = this.session.project!.dir;
@@ -457,7 +470,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       this.packageNames = this.packages.map((p) => p.name);
       this.packagePaths = this.packages.map((p) => p.fullPath);
       this.packageGlobs = this.packages.map((p) => `${p.path}/**/*`);
-      this.username = this.getDefaultUsername();
+      this.username = await this.getDefaultUsername();
       this.connection = await this.createConnection();
       const context = {
         connection: this.connection,
@@ -477,18 +490,16 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     }
   }
 
-  private async getCommandMapping(): Promise<Commands> {
+  private async getExecutableName(): Promise<Executable> {
     if (this.isLocalExecutable()) {
       const npmPackagePath = this.executable
         .replace(SourceTestkit.LocalProdPath, '')
         .replace(SourceTestkit.LocalDevPath, '');
       const pkgJsonPath = path.join(npmPackagePath, 'package.json');
       const pkgJson = (await fs.readJsonMap(pkgJsonPath)) as { oclif: { bin: string } };
-      const key = pkgJson.oclif.bin as EXECUTABLE;
-      return COMMANDS[key];
+      return pkgJson.oclif.bin as Executable;
     } else {
-      const key = path.basename(this.executable) as EXECUTABLE;
-      return COMMANDS[key];
+      return path.basename(this.executable) as Executable;
     }
   }
 
@@ -524,17 +535,24 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
           'sfdx config:set restDeploy=false --global',
           'sfdx force:org:create -d 1 -s -f config/project-scratch-def.json',
         ];
+
     return await TestSession.create({
       project: { gitClone: this.repository },
-      setupCommands,
+      setupCommands: [...setupCommands, ...this.setupCommands],
       retries: 2,
     });
   }
 
-  private getDefaultUsername(): string {
-    const configResult = execCmd<Array<{ key: string; value: string }>>('config:get defaultusername --json')!;
-    const result = configResult.jsonOutput?.result;
-    return result!.find((r) => r.key === 'defaultusername')!.value;
+  private async getDefaultUsername(): Promise<string> {
+    const configResult = execCmd(`config:get ${Config.DEFAULT_USERNAME} --json`).jsonOutput!;
+    const results = get(configResult, 'result', configResult) as Array<{ key?: string; name?: string; value: string }>;
+    const username = results.find(
+      (r) => r.key === Config.DEFAULT_USERNAME || r.name === Config.DEFAULT_USERNAME
+    )!.value;
+    if (this.executableName === Executable.SF) {
+      execCmd(`config:set target-org ${username} --json`);
+    }
+    return username;
   }
 
   private async createConnection(): Promise<Nullable<Connection>> {
@@ -565,6 +583,7 @@ export namespace SourceTestkit {
     readonly repository: string;
     readonly nut: string;
     readonly orgless?: boolean;
+    readonly setupCommands?: string[];
   };
 
   export type CommandOpts = {
@@ -574,13 +593,13 @@ export namespace SourceTestkit {
   };
 }
 
-export enum EXECUTABLE {
+export enum Executable {
   SFDX = 'sfdx',
   SF = 'sf',
 }
 
 export const COMMANDS = {
-  [EXECUTABLE.SFDX]: {
+  [Executable.SFDX]: {
     deploy: 'force:source:deploy',
     deployReport: 'force:source:deploy:report',
     deployCancel: 'force:source:deploy:cancel',
@@ -590,7 +609,7 @@ export const COMMANDS = {
     pull: 'force:source:pull',
     status: 'force:source:status',
   },
-  [EXECUTABLE.SF]: {
+  [Executable.SF]: {
     deploy: 'deploy metadata',
   },
 };
