@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/salesforcecli/source-testkit/compare/v0.0.8...v0.0.9) (2021-07-26)
+
+
+### Bug Fixes
+
+* make sf friendly ([0f93b9a](https://github.com/salesforcecli/source-testkit/commit/0f93b9a16c62a74e4b4d6b5e945d8252ca4ec5cb))
+
 ### [0.0.8](https://github.com/salesforcecli/source-testkit/compare/v0.0.7...v0.0.8) (2021-07-15)
 
 
