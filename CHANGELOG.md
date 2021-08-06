@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/salesforcecli/source-testkit/compare/v0.0.9...v0.0.10) (2021-08-06)
+
+
+### Features
+
+* use SDR 4 ([#6](https://github.com/salesforcecli/source-testkit/issues/6)) ([c0cab8f](https://github.com/salesforcecli/source-testkit/commit/c0cab8fc623560f18107e65f61e270c1c1bcd16e))
+
 ### [0.0.9](https://github.com/salesforcecli/source-testkit/compare/v0.0.8...v0.0.9) (2021-07-26)
 
 
