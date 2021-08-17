@@ -72,6 +72,7 @@ export class Assertions {
       .filter((f) => !f.endsWith('.resource'))
       .map((f) => this.fileTracker.getLatest(path.normalize(f)))
       .filter((f) => !!f);
+    expect(fileHistories, 'file history to exist for tracked files').length.to.be.greaterThan(0);
     const allChanged = fileHistories.every((f) => f?.changedFromPrevious);
     expect(allChanged, 'all files to be changed').to.be.true;
   }
@@ -87,6 +88,7 @@ export class Assertions {
       .filter((f) => !f.endsWith('.resource-meta.xml'))
       .map((f) => this.fileTracker.getLatest(f))
       .filter((f) => !!f);
+    expect(fileHistories, 'file history to exist for tracked files').length.to.be.greaterThan(0);
     const allChanged = fileHistories.every((f) => f?.changedFromPrevious);
     expect(allChanged, 'all files to NOT be changed').to.be.false;
   }
