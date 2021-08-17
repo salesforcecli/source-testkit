@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://github.com/salesforcecli/source-testkit/compare/v0.0.10...v0.0.11) (2021-08-17)
+
+
+### Bug Fixes
+
+* ensure file history exists when testing if local files have changed ([01eea46](https://github.com/salesforcecli/source-testkit/commit/01eea46baf613b639edf02a3da568290fe3335b1))
+
 ### [0.0.10](https://github.com/salesforcecli/source-testkit/compare/v0.0.9...v0.0.10) (2021-08-06)
 
 
