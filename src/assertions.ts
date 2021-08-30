@@ -11,7 +11,7 @@ import * as chaiEach from 'chai-each';
 import { JsonMap, Nullable } from '@salesforce/ts-types';
 import * as fg from 'fast-glob';
 import { Connection, fs } from '@salesforce/core';
-import { MetadataResolver } from '@salesforce/source-deploy-retrieve';
+import { FileResponse, MetadataResolver } from '@salesforce/source-deploy-retrieve';
 import { debug, Debugger } from 'debug';
 import { ApexClass, ApexTestResult, Commands, Context, SourceMember, SourceState, StatusResult } from './types';
 import { ExecutionLog } from './executionLog';
@@ -102,6 +102,23 @@ export class Assertions {
     deployCommand = this.commands.deploy
   ): Promise<void> {
     await this.filesToBeUpdated(globs, ignore, deployCommand);
+  }
+
+  /**
+   * Finds all files in project based on the provided globs and expects them to be updated on the server by comparing to what was returned in the FileResponse[]
+   */
+  public async filesToBeDeployedViaResult(
+    globs: string[],
+    ignore: string[] = [],
+    result: FileResponse[]
+  ): Promise<void> {
+    const all = await this.doGlob(globs);
+    const ignoreFiles = await this.doGlob(ignore, false);
+    const toTrack = all.filter((file) => !ignoreFiles.includes(file));
+
+    result.map((source) => {
+      expect(toTrack, `toTrack: ${toTrack.join('\n')}, missing file : ${source.filePath}`).to.include(source.filePath);
+    });
   }
 
   /**
