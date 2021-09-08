@@ -114,14 +114,11 @@ export class Assertions {
   ): Promise<void> {
     const all = await this.doGlob(globs);
     const ignoreFiles = await this.doGlob(ignore, false);
-    const toTrack = all.filter((file) => !ignoreFiles.includes(file));
+    // glob will return files with '/' as separators, this won't work on Windows
+    const toTrack = all.filter((file) => !ignoreFiles.includes(file)).map((file) => file.replace(/\//g, path.sep));
 
     result.map((source) => {
-      // glob will return files with '/' as separators, this won't work on Windows
-      const normalizedFilePath = (source.filePath ?? '').replace(/\//g, path.sep);
-      expect(toTrack, `toTrack: ${toTrack.join('\n')}, missing file : ${normalizedFilePath}`).to.include(
-        normalizedFilePath
-      );
+      expect(toTrack, `toTrack: ${toTrack.join('\n')}, missing file : ${source.filePath}`).to.include(source.filePath);
     });
   }
 
