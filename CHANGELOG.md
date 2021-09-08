@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/salesforcecli/source-testkit/compare/v0.0.13...v0.0.14) (2021-09-08)
+
+
+### Bug Fixes
+
+* convert correct sep ([#10](https://github.com/salesforcecli/source-testkit/issues/10)) ([6b9356b](https://github.com/salesforcecli/source-testkit/commit/6b9356b537932dd485cf448b6bdb0ab64c15a5f0))
+
 ### [0.0.13](https://github.com/salesforcecli/source-testkit/compare/v0.0.12...v0.0.13) (2021-09-01)
 
 ### [0.0.12](https://github.com/salesforcecli/source-testkit/compare/v0.0.11...v0.0.12) (2021-09-01)
