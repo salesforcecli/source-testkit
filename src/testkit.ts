@@ -544,14 +544,10 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   }
 
   private async getDefaultUsername(): Promise<string> {
-    const configResult = execCmd(`config:get ${Config.DEFAULT_USERNAME} --json`).jsonOutput!;
+    const configVar = this.executableName === Executable.SF ? 'target-org' : Config.DEFAULT_USERNAME;
+    const configResult = execCmd(`config:get ${configVar} --json`).jsonOutput!;
     const results = get(configResult, 'result', configResult) as Array<{ key?: string; name?: string; value: string }>;
-    const username = results.find(
-      (r) => r.key === Config.DEFAULT_USERNAME || r.name === Config.DEFAULT_USERNAME
-    )!.value;
-    if (this.executableName === Executable.SF) {
-      execCmd(`config:set target-org ${username} --json`);
-    }
+    const username = results.find((r) => r.key === configVar || r.name === configVar)!.value;
     return username;
   }
 
