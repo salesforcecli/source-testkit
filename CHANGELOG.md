@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://github.com/salesforcecli/source-testkit/compare/v0.0.14...v0.0.15) (2021-09-29)
+
+
+### Bug Fixes
+
+* use appropriate config key based on executable ([cc36ff8](https://github.com/salesforcecli/source-testkit/commit/cc36ff859c4fc7e4645043cccbd39b75c0cc253c))
+
 ### [0.0.14](https://github.com/salesforcecli/source-testkit/compare/v0.0.13...v0.0.14) (2021-09-08)
 
 
