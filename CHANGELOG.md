@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://github.com/salesforcecli/source-testkit/compare/v0.0.15...v0.0.16) (2021-10-13)
+
+
+### Bug Fixes
+
+* add support for simple retrieve metadata for sf ([#12](https://github.com/salesforcecli/source-testkit/issues/12)) ([85a940d](https://github.com/salesforcecli/source-testkit/commit/85a940d008370ae86a9796904e8aa29c29241c2f))
+
 ### [0.0.15](https://github.com/salesforcecli/source-testkit/compare/v0.0.14...v0.0.15) (2021-09-29)
 
 
