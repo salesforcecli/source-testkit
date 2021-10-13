@@ -105,6 +105,17 @@ export class Assertions {
   }
 
   /**
+   * Finds all files in project based on the provided globs and expects them to be retrieved from the server
+   */
+  public async filesToBeRetrieved(
+    globs: string[],
+    ignore: string[] = [],
+    retrieveCommand = this.commands.retrieve
+  ): Promise<void> {
+    await this.filesToBeUpdated(globs, ignore, retrieveCommand);
+  }
+
+  /**
    * Finds all files in project based on the provided globs and expects them to be updated on the server by comparing to what was returned in the FileResponse[]
    */
   public async filesToBeDeployedViaResult(
