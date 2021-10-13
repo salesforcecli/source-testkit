@@ -607,5 +607,6 @@ export const COMMANDS = {
   },
   [Executable.SF]: {
     deploy: 'deploy metadata',
+    retrieve: 'retrieve metadata',
   },
 };
