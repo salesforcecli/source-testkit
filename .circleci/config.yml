@@ -1,39 +1,72 @@
 version: 2.1
+
 orbs:
   release-management: salesforce/npm-release-management@4
+
+parameters:
+  run-auto-workflows:
+    description: >
+      Boolean that controls when an workflow would run.
+
+      It is used to gate which workflows should run when github events occur.
+
+      This parameter is used by automation to determine if a workflow will run
+      within a pipeline.
+    default: true
+    type: boolean
+  run-dependabot-automerge:
+    description: >
+      Boolean that controls when dependabot-automerge will run
+
+      This parameter is used by an scheduled trigger to determine if the
+      dependabot-automerge workflow will run.
+    type: boolean
+    default: false
+  run-test-ts-update:
+    description: >
+      Boolean that controls when test-ts-update will run
+
+      This parameter is used by an scheduled trigger to determine if the
+      test-ts-update workflow will run.
+    type: boolean
+    default: false
+
 workflows:
   version: 2
   test-and-release:
+    when: << pipeline.parameters.run-auto-workflows >>
     jobs:
       - release-management/validate-pr:
           filters:
             branches:
               ignore: main
       - release-management/test-package:
-          name: node-latest
-          node_version: latest
-          upload-coverage: true
-      - release-management/test-package:
-          node_version: '14'
-          name: node-14
-      - release-management/test-package:
-          node_version: '12'
-          name: node-12
+          matrix:
+            parameters:
+              os:
+                - linux
+                - windows
+              node_version:
+                # - latest
+                - lts
+                - maintenance
+            exclude:
+              - os: windows
+                node_version: maintenance
       - release-management/release-package:
+          github-release: true
           requires:
-            - node-latest
-            - node-14
-            - node-12
+            - release-management/test-package
           filters:
             branches:
               only: main
+          context: CLI_CTC
   test-ts-update:
-    triggers:
-      - schedule:
-          cron: 0 0 * * *
-          filters:
-            branches:
-              only:
-                - main
+    when: << pipeline.parameters.run-test-ts-update >>
     jobs:
       - release-management/test-ts-update
+  dependabot-automerge:
+    when: << pipeline.parameters.run-dependabot-automerge >>
+    jobs:
+      - release-management/dependabot-automerge:
+          merge-method: squash
