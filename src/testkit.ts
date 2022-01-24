@@ -446,7 +446,8 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
         return jsonOutput;
       }
     } catch (err) {
-      await this.handleError(err);
+      const error = err as Error;
+      await this.handleError(error);
     }
   }
 
@@ -486,7 +487,8 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
         .filter((f) => !f.endsWith('.DS_Store'))
         .map((f) => f.replace(`${this.testMetadataFolder}${path.sep}`, ''));
     } catch (err) {
-      await this.handleError(err, true);
+      const error = err as Error;
+      await this.handleError(error, true);
     }
   }
 
