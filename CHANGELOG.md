@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://github.com/salesforcecli/source-testkit/compare/v0.0.17...v0.0.18) (2022-03-08)
+
+### Features
+
+- make type changes to make testing sf easier ([#59](https://github.com/salesforcecli/source-testkit/issues/59)) ([7752ed6](https://github.com/salesforcecli/source-testkit/commit/7752ed66eff3be11c9fa6921223f277427334fab))
+
 ### [0.0.17](https://github.com/salesforcecli/source-testkit/compare/v0.0.16...v0.0.17) (2022-02-12)
 
 ### [0.0.16](https://github.com/salesforcecli/source-testkit/compare/v0.0.15...v0.0.16) (2021-10-13)
