@@ -17,7 +17,7 @@ import { AnyJson, Dictionary, ensureString, get, JsonMap, Nullable } from '@sale
 import { AuthInfo, Config, Connection, fs, NamedPackageDir, SfdxProject } from '@salesforce/core';
 import { debug, Debugger } from 'debug';
 import { MetadataResolver } from '@salesforce/source-deploy-retrieve';
-import { Commands, Result, SfdxResult, SfResult, StatusResult } from './types';
+import { Commands, Result, StatusResult } from './types';
 import { Assertions } from './assertions';
 import { ExecutionLog } from './executionLog';
 import { FileTracker, traverseForFiles } from './fileTracker';
@@ -100,8 +100,8 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   /**
    * Executes force:source:deploy
    */
-  public async deploy(options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Result<{ id: string }>> {
-    return this.execute<{ id: string }>(this.getCommandString('deploy'), options);
+  public async deploy<T = { id: string }>(options: Partial<SourceTestkit.CommandOpts> = {}): Promise<Result<T>> {
+    return this.execute<T>(this.getCommandString('deploy'), options);
   }
 
   /**
@@ -421,8 +421,8 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
           : execCmd<T>(command, { ensureExitCode: exitCode, cli: 'sfdx' });
       await this.fileTracker.updateAll(`POST: ${command}`);
 
-      if (json && this.executableName === Executable.SFDX) {
-        const jsonOutput = result.jsonOutput as SfdxResult<T>;
+      if (json) {
+        const jsonOutput = result.jsonOutput as Result<T>;
         this.debug('%O', jsonOutput);
         if (!jsonOutput) {
           console.error(`${command} returned null jsonOutput`);
@@ -432,16 +432,6 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
           if (jsonOutput.status === 0) {
             this.expect.toHaveProperty(jsonOutput, 'result');
           }
-        }
-        return jsonOutput;
-      }
-
-      if (json && this.executableName === Executable.SF) {
-        const jsonOutput = result.jsonOutput as SfResult<T>;
-        this.debug('%O', jsonOutput);
-        if (!jsonOutput) {
-          console.error(`${command} returned null jsonOutput`);
-          console.error(result);
         }
         return jsonOutput;
       }
