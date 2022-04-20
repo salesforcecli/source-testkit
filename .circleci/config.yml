@@ -60,7 +60,9 @@ workflows:
           filters:
             branches:
               only: main
-          context: CLI_CTC
+          context:
+            - CLI_CTC
+            - release
   test-ts-update:
     when: << pipeline.parameters.run-test-ts-update >>
     jobs:
