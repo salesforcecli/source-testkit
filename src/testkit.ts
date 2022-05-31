@@ -75,7 +75,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
 
   public constructor(options: SourceTestkit.Options) {
     super(options);
-    this.executable = options.executable || which('sfdx').stdout;
+    this.executable = options.executable ?? which('sfdx')?.stdout ?? 'sfdx';
     this.repository = options.repository;
     this.orgless = !!options.orgless;
     this.setupCommands = options.setupCommands || [];
