@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.0.0](https://github.com/salesforcecli/source-testkit/compare/v0.0.18...v1.0.0) (2022-05-31)
+
+### Features
+
+- use parking-orbit newer core/sdr ([#77](https://github.com/salesforcecli/source-testkit/issues/77)) ([d9ed642](https://github.com/salesforcecli/source-testkit/commit/d9ed642003bb85407a7b17ffa7b64764eb81b488))
+
 ### [0.0.18](https://github.com/salesforcecli/source-testkit/compare/v0.0.17...v0.0.18) (2022-03-08)
 
 ### Features
