@@ -4,9 +4,9 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-
+import * as fs from 'fs';
 import * as path from 'path';
-import { fs } from '@salesforce/core';
+import * as crypto from 'crypto';
 import { Nullable } from '@salesforce/ts-types';
 import { Context } from './types';
 
@@ -82,10 +82,12 @@ export class FileTracker {
   private async getContentHash(file: string): Promise<Nullable<string>> {
     const filePath = this.getFullPath(file);
     try {
-      const filestat = await fs.stat(filePath);
+      const filestat = await fs.promises.stat(filePath);
       const isDirectory = filestat.isDirectory();
-      const contents = isDirectory ? (await fs.readdir(filePath)).toString() : await fs.readFile(filePath);
-      return fs.getContentHash(contents);
+      const contents = isDirectory
+        ? (await fs.promises.readdir(filePath)).toString()
+        : await fs.promises.readFile(filePath);
+      return crypto.createHash('sha1').update(contents).digest('hex');
     } catch {
       return null;
     }
@@ -109,7 +111,7 @@ export namespace FileTracker {
  * Returns all files in directory that match the filter
  */
 export async function traverseForFiles(dirPath: string, regexFilter = /./, allFiles: string[] = []): Promise<string[]> {
-  const files = await fs.readdir(dirPath);
+  const files = await fs.promises.readdir(dirPath);
 
   for (const file of files) {
     const filePath = path.join(dirPath, file);
