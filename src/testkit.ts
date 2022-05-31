@@ -14,7 +14,7 @@ import * as fg from 'fast-glob';
 import { exec, find, mv, rm, which } from 'shelljs';
 import { TestSession, execCmd } from '@salesforce/cli-plugins-testkit';
 import { AsyncCreatable, Env, set, parseJsonMap } from '@salesforce/kit';
-import { AnyJson, Dictionary, ensureString, get, JsonMap, Nullable } from '@salesforce/ts-types';
+import { AnyJson, Dictionary, ensureString, JsonMap, Nullable } from '@salesforce/ts-types';
 import { AuthInfo, SfdxPropertyKeys, Connection, NamedPackageDir, SfdxProject } from '@salesforce/core';
 import { debug, Debugger } from 'debug';
 import { MetadataResolver } from '@salesforce/source-deploy-retrieve';
@@ -382,7 +382,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   }
 
   /**
-   * Returns true if the executable being used belongs to a local pacakage
+   * Returns true if the executable being used belongs to a local package
    */
   public isLocalExecutable(): boolean {
     return (
@@ -537,11 +537,17 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   }
 
   private async getDefaultUsername(): Promise<string> {
-    const configVar = this.executableName === Executable.SF ? 'target-org' : SfdxPropertyKeys.DEFAULT_USERNAME;
-    const configResult = execCmd(`config:get ${configVar} --json`).jsonOutput!;
-    const results = get(configResult, 'result', configResult) as Array<{ key?: string; name?: string; value: string }>;
-    const username = results.find((r) => r.key === configVar || r.name === configVar)!.value;
-    return username;
+    const configVar = 'target-org';
+    const configResult = execCmd<Array<{ key?: string; name?: string; value: string }>>(
+      `config:get ${configVar} --json`
+    ).jsonOutput?.result;
+    // depending on which version of config:get the user has available, there may be a name or key
+    // eventually, drop the `key` option and the deprecated SfdxPropertyKeys
+    const possibleKeys = [configVar, SfdxPropertyKeys.DEFAULT_USERNAME];
+    const username = configResult?.find(
+      (r) => (r.key && possibleKeys.includes(r.key)) || (r.name && possibleKeys.includes(r.name))
+    )?.value;
+    return username!;
   }
 
   private async createConnection(): Promise<Nullable<Connection>> {
