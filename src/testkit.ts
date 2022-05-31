@@ -547,10 +547,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     const username = configResult?.find(
       (r) => (r.key && possibleKeys.includes(r.key)) || (r.name && possibleKeys.includes(r.name))
     )?.value;
-    if (!username) {
-      throw new Error('No default username found');
-    }
-    return username;
+    return username!;
   }
 
   private async createConnection(): Promise<Nullable<Connection>> {
