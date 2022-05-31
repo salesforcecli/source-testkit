@@ -4,13 +4,13 @@
  * Licensed under the BSD 3-Clause license.
  * For full license text, see LICENSE.txt file in the repo root or https://opensource.org/licenses/BSD-3-Clause
  */
-
+import * as fs from 'fs';
 import * as path from 'path';
 import { expect, use } from 'chai';
 import * as chaiEach from 'chai-each';
 import { JsonMap, Nullable } from '@salesforce/ts-types';
 import * as fg from 'fast-glob';
-import { Connection, fs } from '@salesforce/core';
+import { Connection } from '@salesforce/core';
 import { FileResponse, MetadataResolver } from '@salesforce/source-deploy-retrieve';
 import { debug, Debugger } from 'debug';
 import { ApexClass, ApexTestResult, Commands, Context, SourceMember, SourceState, StatusResult } from './types';
@@ -157,7 +157,7 @@ export class Assertions {
    */
   public async fileToExist(file: string): Promise<void> {
     const fullPath = file.startsWith(this.projectDir) ? file : path.join(this.projectDir, file);
-    const fileExists = await fs.fileExists(fullPath);
+    const fileExists = fs.existsSync(fullPath);
     expect(fileExists, `${fullPath} to exist`).to.be.true;
   }
 
@@ -197,7 +197,7 @@ export class Assertions {
   public async filesToNotContainString(glob: string, ...strings: string[]): Promise<void> {
     const files = await this.doGlob([glob]);
     for (const file of files) {
-      const contents = await fs.readFile(file, 'UTF-8');
+      const contents = await fs.promises.readFile(file, 'utf-8');
       for (const str of strings) {
         expect(contents, `expect ${file} to not include ${str}`).to.not.include(str);
       }
@@ -210,7 +210,7 @@ export class Assertions {
   public async filesToContainString(glob: string, ...strings: string[]): Promise<void> {
     const files = await this.doGlob([glob]);
     for (const file of files) {
-      const contents = await fs.readFile(file, 'UTF-8');
+      const contents = await fs.promises.readFile(file, 'utf-8');
       for (const str of strings) {
         expect(contents, `expect ${file} to not include ${str}`).to.include(str);
       }

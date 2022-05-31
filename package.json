@@ -1,7 +1,7 @@
 {
   "name": "@salesforce/source-testkit",
   "description": "testkit for running NUTs for source related commands",
-  "version": "0.0.18",
+  "version": "1.0.0",
   "author": "Salesforce",
   "license": "BSD-3-Clause",
   "main": "lib/index.js",
@@ -31,9 +31,9 @@
   ],
   "dependencies": {
     "@salesforce/cli-plugins-testkit": "^1.2.0",
-    "@salesforce/core": "^2.20.11",
+    "@salesforce/core": "^3.19.1",
     "@salesforce/kit": "^1.4.5",
-    "@salesforce/source-deploy-retrieve": "^4.0.2",
+    "@salesforce/source-deploy-retrieve": "^6.0.2",
     "@salesforce/ts-types": "^1.5.5",
     "archiver": "^5.2.0",
     "chai-each": "^0.0.1",

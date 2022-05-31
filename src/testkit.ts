@@ -9,12 +9,13 @@
 
 import * as path from 'path';
 import * as os from 'os';
+import * as fs from 'fs';
 import * as fg from 'fast-glob';
 import { exec, find, mv, rm, which } from 'shelljs';
 import { TestSession, execCmd } from '@salesforce/cli-plugins-testkit';
-import { AsyncCreatable, Env, set } from '@salesforce/kit';
+import { AsyncCreatable, Env, set, parseJsonMap } from '@salesforce/kit';
 import { AnyJson, Dictionary, ensureString, get, JsonMap, Nullable } from '@salesforce/ts-types';
-import { AuthInfo, Config, Connection, fs, NamedPackageDir, SfdxProject } from '@salesforce/core';
+import { AuthInfo, SfdxPropertyKeys, Connection, NamedPackageDir, SfdxProject } from '@salesforce/core';
 import { debug, Debugger } from 'debug';
 import { MetadataResolver } from '@salesforce/source-deploy-retrieve';
 import { Commands, Result, StatusResult } from './types';
@@ -209,7 +210,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     const files = await this.doGlob(globs);
     const returnValue: Dictionary<string> = {};
     for (const file of files) {
-      returnValue[file] = await fs.readFile(file, 'UTF-8');
+      returnValue[file] = await fs.promises.readFile(file, 'utf8');
     }
     return returnValue;
   }
@@ -219,7 +220,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    */
   public async readSourcePathInfos(): Promise<AnyJson> {
     const sourcePathInfosPath = path.join(this.projectDir, '.sfdx', 'orgs', this.username, 'sourcePathInfos.json');
-    return fs.readJson(sourcePathInfosPath);
+    return JSON.parse(await fs.promises.readFile(sourcePathInfosPath, 'utf8')) as AnyJson;
   }
 
   /**
@@ -227,7 +228,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    */
   public async readMaxRevision(): Promise<{ sourceMembers: JsonMap }> {
     const maxRevisionPath = path.join(this.projectDir, '.sfdx', 'orgs', this.username, 'maxRevision.json');
-    return fs.readJson(maxRevisionPath) as unknown as { sourceMembers: JsonMap };
+    return JSON.parse(await fs.promises.readFile(maxRevisionPath, 'utf8')) as { sourceMembers: JsonMap };
   }
 
   /**
@@ -235,14 +236,14 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    */
   public async writeMaxRevision(contents: JsonMap): Promise<void> {
     const maxRevisionPath = path.join(this.projectDir, '.sfdx', 'orgs', this.username, 'maxRevision.json');
-    return fs.writeJson(maxRevisionPath, contents);
+    return fs.promises.writeFile(maxRevisionPath, JSON.stringify(contents));
   }
 
   /**
    * Write file
    */
   public async writeFile(filename: string, contents: string): Promise<void> {
-    return fs.writeFile(filename, contents);
+    return fs.promises.writeFile(filename, contents);
   }
 
   /**
@@ -256,7 +257,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
 </Package>
     `;
     const packageXmlPath = path.join(this.projectDir, 'package.xml');
-    await fs.writeFile(packageXmlPath, packageXml);
+    await fs.promises.writeFile(packageXmlPath, packageXml);
     return packageXmlPath;
   }
 
@@ -265,7 +266,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    */
   public async deleteSourcePathInfos(): Promise<void> {
     const sourcePathInfosPath = path.join(this.projectDir, '.sfdx', 'orgs', this.username, 'sourcePathInfos.json');
-    return fs.unlink(sourcePathInfosPath);
+    return fs.promises.unlink(sourcePathInfosPath);
   }
 
   /**
@@ -273,7 +274,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    */
   public async deleteMaxRevision(): Promise<void> {
     const maxRevisionPath = path.join(this.projectDir, '.sfdx', 'orgs', this.username, 'maxRevision.json');
-    return fs.unlink(maxRevisionPath);
+    return fs.promises.unlink(maxRevisionPath);
   }
 
   /**
@@ -282,7 +283,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   public async deleteGlobs(globs: string[]): Promise<void> {
     const files = await this.doGlob(globs);
     for (const file of files) {
-      await fs.unlink(file);
+      await fs.promises.unlink(file);
     }
   }
 
@@ -291,8 +292,8 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    */
   public async deleteAllSourceFiles(): Promise<void> {
     for (const pkg of this.packagePaths) {
-      await fs.rmdir(pkg, { recursive: true });
-      await fs.mkdirp(pkg);
+      await fs.promises.rm(pkg, { recursive: true });
+      await fs.promises.mkdir(pkg, { recursive: true });
     }
   }
 
@@ -312,9 +313,9 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    */
   public async modifyLocalFile(file: string, append = os.EOL): Promise<void> {
     const fullPath = file.startsWith(this.projectDir) ? file : path.join(this.projectDir, file);
-    let contents = await fs.readFile(fullPath, 'UTF-8');
+    let contents = await fs.promises.readFile(fullPath, 'utf-8');
     contents += append;
-    await fs.writeFile(fullPath, contents);
+    await fs.promises.writeFile(fullPath, contents);
     await this.fileTracker.update(fullPath, 'modified file');
   }
 
@@ -330,7 +331,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       .sobject('QuickActionDefinition')
       .find({ DeveloperName: 'NutAction' }, ['ID']))!;
     const updateRequest = {
-      Id: result[0].Id,
+      Id: result[0].Id as string,
       Description: 'updated description',
     };
     await this.connection?.tooling.sobject('QuickActionDefinition').update(updateRequest);
@@ -348,7 +349,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       try {
         fs.copyFileSync(src, dest);
       } catch {
-        await fs.mkdirp(path.dirname(dest));
+        await fs.promises.mkdir(path.dirname(dest), { recursive: true });
         fs.copyFileSync(src, dest);
       }
     }
@@ -488,7 +489,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
         .replace(SourceTestkit.LocalProdPath, '')
         .replace(SourceTestkit.LocalDevPath, '');
       const pkgJsonPath = path.join(npmPackagePath, 'package.json');
-      const pkgJson = (await fs.readJsonMap(pkgJsonPath)) as { oclif: { bin: string } };
+      const pkgJson = parseJsonMap<{ oclif: { bin: string } }>(await fs.promises.readFile(pkgJsonPath, 'utf8'));
       return pkgJson.oclif.bin as Executable;
     } else {
       return path.basename(this.executable) as Executable;
@@ -536,7 +537,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   }
 
   private async getDefaultUsername(): Promise<string> {
-    const configVar = this.executableName === Executable.SF ? 'target-org' : Config.DEFAULT_USERNAME;
+    const configVar = this.executableName === Executable.SF ? 'target-org' : SfdxPropertyKeys.DEFAULT_USERNAME;
     const configResult = execCmd(`config:get ${configVar} --json`).jsonOutput!;
     const results = get(configResult, 'result', configResult) as Array<{ key?: string; name?: string; value: string }>;
     const username = results.find((r) => r.key === configVar || r.name === configVar)!.value;
