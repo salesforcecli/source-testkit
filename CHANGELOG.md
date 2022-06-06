@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/salesforcecli/source-testkit/compare/v1.0.0...v1.0.1) (2022-05-31)
+
+### Bug Fixes
+
+- support multiple plugin-config versions ([#78](https://github.com/salesforcecli/source-testkit/issues/78)) ([365831f](https://github.com/salesforcecli/source-testkit/commit/365831f5de5f489d2f2065230e8847de1ecf4f0b))
+
 ## [1.0.0](https://github.com/salesforcecli/source-testkit/compare/v0.0.18...v1.0.0) (2022-05-31)
 
 ### Features
