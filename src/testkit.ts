@@ -15,7 +15,7 @@ import { exec, find, mv, rm, which } from 'shelljs';
 import { TestSession, execCmd } from '@salesforce/cli-plugins-testkit';
 import { AsyncCreatable, Env, set, parseJsonMap } from '@salesforce/kit';
 import { AnyJson, Dictionary, ensureString, JsonMap, Nullable } from '@salesforce/ts-types';
-import { AuthInfo, Connection, NamedPackageDir, SfProject, SfdxPropertyKeys, StateAggregator } from '@salesforce/core';
+import { AuthInfo, Connection, NamedPackageDir, SfProject, SfdxPropertyKeys } from '@salesforce/core';
 import { debug, Debugger } from 'debug';
 import { MetadataResolver } from '@salesforce/source-deploy-retrieve';
 import { Commands, Result, StatusResult } from './types';
@@ -552,11 +552,9 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
 
   private async createConnection(): Promise<Nullable<Connection>> {
     if (this.orgless) return;
-    StateAggregator.clearInstance();
     const conn = await Connection.create({
       authInfo: await AuthInfo.create({ username: this.username }),
     });
-    StateAggregator.clearInstance();
     return conn;
   }
 
