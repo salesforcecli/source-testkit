@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.1](https://github.com/salesforcecli/source-testkit/compare/v1.1.0...v1.1.1) (2022-06-06)
+
+### Bug Fixes
+
+- don't clear StateAggregator ([c6cdc17](https://github.com/salesforcecli/source-testkit/commit/c6cdc171bdb8c53e9c5920b8dcb92952db6a2f9c))
+- testkit with no StateAgg clearing ([63b5c0f](https://github.com/salesforcecli/source-testkit/commit/63b5c0fe31caaa0ff576fab2d49cb3de024a6c69))
+
 ## [1.1.0](https://github.com/salesforcecli/source-testkit/compare/v1.0.2...v1.1.0) (2022-06-06)
 
 ### Features
