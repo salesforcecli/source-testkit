@@ -19,6 +19,7 @@ import { countFiles, FileTracker } from './fileTracker';
 
 use(chaiEach);
 
+const SOQL_QUERY_LIMIT = 50_000;
 /**
  * Assertions is a class that is designed to encapsulate common assertions we want to
  * make during NUT testings
@@ -397,10 +398,7 @@ export class Assertions {
 
   private async retrieveSourceMembers(globs: string[], ignore: string[] = []): Promise<SourceMember[]> {
     const query = 'SELECT Id,MemberName,MemberType,RevisionCounter FROM SourceMember';
-    const result = await this.connection?.tooling.query<SourceMember>(query, {
-      autoFetch: true,
-      maxFetch: 50000,
-    });
+    const result = await this.connection?.tooling.query<SourceMember>(`${query} limit ${SOQL_QUERY_LIMIT}`);
     const all = await this.doGlob(globs);
     const ignoreFiles = await this.doGlob(ignore, false);
     const toTrack = all.filter((file) => !ignoreFiles.includes(file));
@@ -426,13 +424,13 @@ export class Assertions {
 
   private async retrieveApexTestResults(): Promise<ApexTestResult[]> {
     const query = 'SELECT TestTimestamp, ApexClassId FROM ApexTestResult';
-    const result = await this.connection?.tooling.query<ApexTestResult>(query, { autoFetch: true, maxFetch: 50000 });
+    const result = await this.connection?.tooling.query<ApexTestResult>(`${query} limit ${SOQL_QUERY_LIMIT}`);
     return result?.records || [];
   }
 
   private async retrieveApexClasses(classNames?: string[]): Promise<ApexClass[]> {
     const query = 'SELECT Name,Id FROM ApexClass';
-    const result = await this.connection?.tooling.query<ApexClass>(query, { autoFetch: true, maxFetch: 50000 });
+    const result = await this.connection?.tooling.query<ApexClass>(`${query} limit ${SOQL_QUERY_LIMIT}`);
     const records = result?.records || [];
     return classNames ? records.filter((r) => classNames.includes(r.Name)) : records;
   }

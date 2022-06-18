@@ -57,10 +57,7 @@ export class ExecutionLog {
 
   private async querySourceMembers(): Promise<SourceMember[]> {
     const query = 'SELECT Id,MemberName,MemberType,RevisionCounter FROM SourceMember';
-    const result = await this.context.connection?.tooling.query<SourceMember>(query, {
-      autoFetch: true,
-      maxFetch: 50000,
-    });
+    const result = await this.context.connection?.tooling.query<SourceMember>(`${query} limit 50000`);
     return result?.records || [];
   }
 }
