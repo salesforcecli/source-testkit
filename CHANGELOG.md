@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.1](https://github.com/salesforcecli/source-testkit/compare/v1.2.0...v1.2.1) (2022-06-18)
+
+### Bug Fixes
+
+- remove autofetch queries that were set to 50k ([5854728](https://github.com/salesforcecli/source-testkit/commit/58547288360792b9ac2af11f4be4959c4828ede5))
+
 ## [1.2.0](https://github.com/salesforcecli/source-testkit/compare/v1.1.1...v1.2.0) (2022-06-08)
 
 ### Features
