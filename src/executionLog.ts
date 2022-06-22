@@ -6,7 +6,6 @@
  */
 
 import { ensureString } from '@salesforce/ts-types';
-import { autoFetchQuery } from './autoFetchQuery';
 import { Context, SourceMember } from './types';
 
 /**
@@ -58,9 +57,10 @@ export class ExecutionLog {
 
   private async querySourceMembers(): Promise<SourceMember[]> {
     const query = 'SELECT Id,MemberName,MemberType,RevisionCounter FROM SourceMember';
-    const result = this.context.connection
-      ? await autoFetchQuery<SourceMember>(query, this.context.connection, true)
-      : undefined;
+    const result = await this.context.connection?.tooling.query<SourceMember>(query, {
+      autoFetch: true,
+      maxFetch: 50_000,
+    });
     return result?.records || [];
   }
 }
