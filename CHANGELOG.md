@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/salesforcecli/source-testkit/compare/v1.2.2...v1.2.3) (2022-06-22)
+
+### Bug Fixes
+
+- bump lib versions ([#82](https://github.com/salesforcecli/source-testkit/issues/82)) ([40f90d6](https://github.com/salesforcecli/source-testkit/commit/40f90d6b8e3e47a7c172dd01a8fa43cf96e89ab4))
+
 ### [1.2.2](https://github.com/salesforcecli/source-testkit/compare/v1.2.1...v1.2.2) (2022-06-18)
 
 ### Bug Fixes
