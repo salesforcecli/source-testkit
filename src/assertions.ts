@@ -16,7 +16,6 @@ import { debug, Debugger } from 'debug';
 import { ApexClass, ApexTestResult, Commands, Context, SourceMember, SourceState, StatusResult } from './types';
 import { ExecutionLog } from './executionLog';
 import { countFiles, FileTracker } from './fileTracker';
-import { autoFetchQuery } from './autoFetchQuery';
 
 use(chaiEach);
 
@@ -398,7 +397,7 @@ export class Assertions {
 
   private async retrieveSourceMembers(globs: string[], ignore: string[] = []): Promise<SourceMember[]> {
     const query = 'SELECT Id,MemberName,MemberType,RevisionCounter FROM SourceMember';
-    const result = this.connection ? await autoFetchQuery<SourceMember>(query, this.connection, true) : undefined;
+    const result = await this.connection?.tooling.query<SourceMember>(query, { autoFetch: true, maxFetch: 50_000 });
     const all = await this.doGlob(globs);
     const ignoreFiles = await this.doGlob(ignore, false);
     const toTrack = all.filter((file) => !ignoreFiles.includes(file));
@@ -424,13 +423,13 @@ export class Assertions {
 
   private async retrieveApexTestResults(): Promise<ApexTestResult[]> {
     const query = 'SELECT TestTimestamp, ApexClassId FROM ApexTestResult';
-    const result = this.connection ? await autoFetchQuery<ApexTestResult>(query, this.connection, true) : undefined;
+    const result = await this.connection?.tooling.query<ApexTestResult>(query, { autoFetch: true, maxFetch: 50_000 });
     return result?.records || [];
   }
 
   private async retrieveApexClasses(classNames?: string[]): Promise<ApexClass[]> {
     const query = 'SELECT Name,Id FROM ApexClass';
-    const result = this.connection ? await autoFetchQuery<ApexClass>(query, this.connection, true) : undefined;
+    const result = await this.connection?.tooling.query<ApexClass>(query, { autoFetch: true, maxFetch: 50_000 });
     const records = result?.records || [];
     return classNames ? records.filter((r) => classNames.includes(r.Name)) : records;
   }

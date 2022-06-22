@@ -30,10 +30,10 @@
     "!lib/**/*.map"
   ],
   "dependencies": {
-    "@salesforce/cli-plugins-testkit": "^2.2.0",
-    "@salesforce/core": "^3.20.1",
+    "@salesforce/cli-plugins-testkit": "^2.3.0",
+    "@salesforce/core": "^3.21.2",
     "@salesforce/kit": "^1.5.42",
-    "@salesforce/source-deploy-retrieve": "^6.0.2",
+    "@salesforce/source-deploy-retrieve": "^6.1.0",
     "@salesforce/ts-types": "^1.5.20",
     "archiver": "^5.2.0",
     "chai-each": "^0.0.1",
