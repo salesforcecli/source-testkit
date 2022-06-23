@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://github.com/salesforcecli/source-testkit/compare/v1.2.4...v1.2.5) (2022-06-22)
+
+### Bug Fixes
+
+- yarn deduplicate for fewer jsforces ([b535295](https://github.com/salesforcecli/source-testkit/commit/b5352951cc3a39a6dc9cbc4a92a04c2669e30b03))
+
 ### [1.2.4](https://github.com/salesforcecli/source-testkit/compare/v1.2.3...v1.2.4) (2022-06-22)
 
 ### Bug Fixes
