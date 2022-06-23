@@ -581,10 +581,10 @@
     strip-ansi "6.0.1"
     ts-retry-promise "^0.6.0"
 
-"@salesforce/core@^3.20.1", "@salesforce/core@^3.21.1", "@salesforce/core@^3.21.3":
-  version "3.21.3"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.21.3.tgz#c19adb691d14c4c2c1ddcd9b63b054a7f69e4f05"
-  integrity sha512-tpGLCkkjKCsuK7gACwHjb6C0D7i9KRXMr4Na7hahHB7GxNvTWi8ZpgXcKd1nMumHpUeMZ5vmEQPuCP9MSOmeRQ==
+"@salesforce/core@^3.20.1", "@salesforce/core@^3.21.1", "@salesforce/core@^3.21.4":
+  version "3.21.4"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-3.21.4.tgz#162827f0ac9a0be4244443cbdefd159687b62b5a"
+  integrity sha512-JPaABNGXU4g2IcudIWBUT/8Gh0PHOSbv8pQbhm7qsQENtczet1H0lnTJb7MSKpRFnZXEMPkOZMEiyH0/Q1aasw==
   dependencies:
     "@salesforce/bunyan" "^2.0.0"
     "@salesforce/kit" "^1.5.41"
@@ -601,7 +601,7 @@
     form-data "^4.0.0"
     graceful-fs "^4.2.9"
     js2xmlparser "^4.0.1"
-    jsforce "2.0.0-beta.12"
+    jsforce "2.0.0-beta.13"
     jsonwebtoken "8.5.1"
     mkdirp "1.0.4"
     ts-retry-promise "^0.6.0"
@@ -3622,62 +3622,36 @@ jsesc@^2.5.1:
   resolved "https://registry.npmjs.org/jsesc/-/jsesc-2.5.2.tgz#80564d2e483dacf6e8ef209650a67df3f0c283a4"
   integrity sha512-OYu7XEzjkCQ3C5Ps3QIZsQfNpqoJyZZA99wd9aWd05NCtC5pWOkShK2mkL6HXQR6/Cy2lbNdPlZBpuQHXE63gA==
 
-jsforce@2.0.0-beta.10:
-  version "2.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/jsforce/-/jsforce-2.0.0-beta.10.tgz#c33fee5dd01c96d121235cffb8fee1458a35423e"
-  integrity sha512-AFigJHQocj8t36Eu+9XffoKoC2FO4/uMDMg08TfTXgvIp53lzvnQJoQrhEnwnKReof4tO2d+7j+d1QyiOa2yGg==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@babel/runtime-corejs3" "^7.12.5"
-    "@types/node" "^12.19.9"
-    abort-controller "^3.0.0"
-    base64url "^3.0.1"
-    commander "^4.0.1"
-    core-js "^3.6.4"
-    csv-parse "^4.8.2"
-    csv-stringify "^5.3.4"
-    faye "^1.4.0"
-    form-data "^4.0.0"
-    fs-extra "^8.1.0"
-    https-proxy-agent "^5.0.0"
-    inquirer "^7.0.0"
-    multistream "^3.1.0"
-    node-fetch "^2.6.1"
-    open "^7.0.0"
-    regenerator-runtime "^0.13.3"
-    strip-ansi "^6.0.0"
-    xml2js "^0.4.22"
-
-jsforce@2.0.0-beta.11:
-  version "2.0.0-beta.11"
-  resolved "https://registry.yarnpkg.com/jsforce/-/jsforce-2.0.0-beta.11.tgz#3bce7a91aee425e72392057bb3fda53b6b2b829f"
-  integrity sha512-K/4F7mqMya2mnT16aFvd743MMQCA7MfXR85aKd1V87b2Ol/MDzfxTDwXWC8iXWDjTCT7KkZtcYMnY7ZxqbUOQA==
-  dependencies:
-    "@babel/runtime" "^7.12.5"
-    "@babel/runtime-corejs3" "^7.12.5"
-    "@types/node" "^12.19.9"
-    abort-controller "^3.0.0"
-    base64url "^3.0.1"
-    commander "^4.0.1"
-    core-js "^3.6.4"
-    csv-parse "^4.8.2"
-    csv-stringify "^5.3.4"
-    faye "^1.4.0"
-    form-data "^4.0.0"
-    fs-extra "^8.1.0"
-    https-proxy-agent "^5.0.0"
-    inquirer "^7.0.0"
-    multistream "^3.1.0"
-    node-fetch "^2.6.1"
-    open "^7.0.0"
-    regenerator-runtime "^0.13.3"
-    strip-ansi "^6.0.0"
-    xml2js "^0.4.22"
-
 jsforce@2.0.0-beta.12:
   version "2.0.0-beta.12"
   resolved "https://registry.yarnpkg.com/jsforce/-/jsforce-2.0.0-beta.12.tgz#55e1d5d49ebde380fb3582f5964a74da51dc271e"
   integrity sha512-HGGxDm0t5KUS7We2XMWTQQLmiwHLbZRdyEV9A/2rugorLwIPFJb3bnqKIyeO83cjETiVWYXFuEZwZR8XadWmEg==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@babel/runtime-corejs3" "^7.12.5"
+    "@types/node" "^12.19.9"
+    abort-controller "^3.0.0"
+    base64url "^3.0.1"
+    commander "^4.0.1"
+    core-js "^3.6.4"
+    csv-parse "^4.8.2"
+    csv-stringify "^5.3.4"
+    faye "^1.4.0"
+    form-data "^4.0.0"
+    fs-extra "^8.1.0"
+    https-proxy-agent "^5.0.0"
+    inquirer "^7.0.0"
+    multistream "^3.1.0"
+    node-fetch "^2.6.1"
+    open "^7.0.0"
+    regenerator-runtime "^0.13.3"
+    strip-ansi "^6.0.0"
+    xml2js "^0.4.22"
+
+jsforce@2.0.0-beta.13:
+  version "2.0.0-beta.13"
+  resolved "https://registry.yarnpkg.com/jsforce/-/jsforce-2.0.0-beta.13.tgz#e0d03b3e173288ec3451b67299a9c85d126ccdd5"
+  integrity sha512-gs6Ac5OTOz81zN3KO4AFC1onzwrcDACZxjDPicLLzuf0XvTf2RLZmtFPuIXi386mXc7fzRD/KbnxTIRR8Nyy6A==
   dependencies:
     "@babel/runtime" "^7.12.5"
     "@babel/runtime-corejs3" "^7.12.5"
