@@ -181,7 +181,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   public async assignPermissionSet(
     options: Partial<SourceTestkit.CommandOpts> = {}
   ): Promise<Result<{ success: [{ name: string; value: string }]; failures: [{ name: string; value: string }] }>> {
-    return await this.execute('force:user:permset:assign', options);
+    return this.execute('force:user:permset:assign', options);
   }
 
   /**
@@ -529,7 +529,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
           'sfdx force:org:create -d 1 -s -f config/project-scratch-def.json',
         ];
 
-    return await TestSession.create({
+    return TestSession.create({
       project: { gitClone: this.repository },
       setupCommands: [...setupCommands, ...this.setupCommands],
       retries: 2,

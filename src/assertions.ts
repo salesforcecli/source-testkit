@@ -321,9 +321,7 @@ export class Assertions {
     const classIds = apexClasses.map((c) => c.Id);
     const executionTimestamp = this.executionLog.getLatestTimestamp(this.commands.deploy);
     const testResults = await this.retrieveApexTestResults();
-    const testsRunAfterTimestamp = testResults.filter((r) => {
-      return new Date(r.TestTimestamp) > executionTimestamp && classIds.includes(r.ApexClassId);
-    });
+    const testsRunAfterTimestamp = testResults.filter((r) => new Date(r.TestTimestamp) > executionTimestamp && classIds.includes(r.ApexClassId));
 
     expect(testsRunAfterTimestamp.length, 'tests to be run during deploy').to.be.greaterThan(0);
   }
@@ -416,9 +414,7 @@ export class Assertions {
         }
       }
     }
-    return (result?.records || []).filter((sourceMember) => {
-      return membersMap.get(sourceMember.MemberType)?.has(sourceMember.MemberName);
-    });
+    return (result?.records || []).filter((sourceMember) => membersMap.get(sourceMember.MemberType)?.has(sourceMember.MemberName));
   }
 
   private async retrieveApexTestResults(): Promise<ApexTestResult[]> {
