@@ -504,6 +504,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
 
     return await TestSession.create({
       project: { gitClone: this.repository },
+      devhubAuthStrategy: 'AUTO',
       scratchOrgs: [...scratchOrgs, ...this.scratchOrgs],
       retries: 2,
     });
