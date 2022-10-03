@@ -11,8 +11,8 @@ import * as path from 'path';
 import * as os from 'os';
 import * as fs from 'fs';
 import * as fg from 'fast-glob';
-import { exec, find, mv, rm, which } from 'shelljs';
-import { TestSession, execCmd } from '@salesforce/cli-plugins-testkit';
+import { exec, find, mv, rm } from 'shelljs';
+import { TestSession, execCmd, ScratchOrgConfig, CLI } from '@salesforce/cli-plugins-testkit';
 import { AsyncCreatable, Env, set, parseJsonMap } from '@salesforce/kit';
 import { AnyJson, Dictionary, ensureString, JsonMap, Nullable } from '@salesforce/ts-types';
 import { AuthInfo, Connection, NamedPackageDir, SfProject, SfdxPropertyKeys } from '@salesforce/core';
@@ -45,9 +45,8 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     exitCode: 0,
     args: '',
     json: true,
+    cli: 'inherit',
   };
-  private static LocalDevPath = path.join('bin', 'dev');
-  private static LocalProdPath = path.join('bin', 'run');
 
   public packages!: NamedPackageDir[];
   public packageNames!: string[];
@@ -62,7 +61,6 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   private commands!: Commands;
   private connection: Nullable<Connection>;
   private debug: Debugger;
-  private executable: string;
   private executableName!: Executable;
   private executionLog!: ExecutionLog;
   private fileTracker!: FileTracker;
@@ -71,14 +69,13 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   private orgless: boolean;
   private repository: string;
   private session!: TestSession;
-  private setupCommands: string[];
+  private scratchOrgs: ScratchOrgConfig[];
 
   public constructor(options: SourceTestkit.Options) {
     super(options);
-    this.executable = options.executable ?? which('sfdx')?.stdout ?? 'sfdx';
     this.repository = options.repository;
     this.orgless = !!options.orgless;
-    this.setupCommands = options.setupCommands || [];
+    this.scratchOrgs = options.scratchOrgs || [];
     this.nut = path.basename(options.nut);
     this.debug = debug(`sourceTestkit:${this.nut}`);
   }
@@ -382,15 +379,6 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   }
 
   /**
-   * Returns true if the executable being used belongs to a local package
-   */
-  public isLocalExecutable(): boolean {
-    return (
-      this.executable.endsWith(SourceTestkit.LocalDevPath) || this.executable.endsWith(SourceTestkit.LocalProdPath)
-    );
-  }
-
-  /**
    * Move the manifest file to the current working directory.
    *
    * This is used because the SDR library does not output the package.xml
@@ -416,10 +404,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       this.debug(`${command} (expecting exit code: ${exitCode})`);
       await this.fileTracker.updateAll(`PRE: ${command}`);
       await this.executionLog.add(command);
-      const result =
-        this.executableName === Executable.SF
-          ? execCmd<T>(command, { ensureExitCode: exitCode, cli: 'sf' })
-          : execCmd<T>(command, { ensureExitCode: exitCode, cli: 'sfdx' });
+      const result = execCmd<T>(command, { ensureExitCode: exitCode, cli: options.cli ?? 'inherit' });
       await this.fileTracker.updateAll(`POST: ${command}`);
 
       if (json) {
@@ -448,8 +433,6 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       ensureString(SourceTestkit.Env.getString('TESTKIT_JWT_CLIENT_ID'));
       ensureString(SourceTestkit.Env.getString('TESTKIT_HUB_INSTANCE'));
     }
-
-    SourceTestkit.Env.setString('TESTKIT_EXECUTABLE_PATH', this.executable);
 
     try {
       this.executableName = await this.getExecutableName();
@@ -484,16 +467,9 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   }
 
   private async getExecutableName(): Promise<Executable> {
-    if (this.isLocalExecutable()) {
-      const npmPackagePath = this.executable
-        .replace(SourceTestkit.LocalProdPath, '')
-        .replace(SourceTestkit.LocalDevPath, '');
-      const pkgJsonPath = path.join(npmPackagePath, 'package.json');
-      const pkgJson = parseJsonMap<{ oclif: { bin: string } }>(await fs.promises.readFile(pkgJsonPath, 'utf8'));
-      return pkgJson.oclif.bin as Executable;
-    } else {
-      return path.basename(this.executable) as Executable;
-    }
+    const pkgJsonPath = path.join(process.cwd(), 'package.json');
+    const pkgJson = parseJsonMap<{ oclif: { bin: string } }>(await fs.promises.readFile(pkgJsonPath, 'utf8'));
+    return pkgJson.oclif.bin as Executable;
   }
 
   private getCommandString(cmdKey: string): string {
@@ -501,7 +477,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     if (cmd) {
       return cmd;
     } else {
-      throw new Error(`${cmdKey} command not implemented for executable ${this.executable}`);
+      throw new Error(`${cmdKey} command not implemented for this executable`);
     }
   }
 
@@ -522,16 +498,13 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   }
 
   private async createSession(): Promise<TestSession> {
-    const setupCommands = this.orgless
+    const scratchOrgs: ScratchOrgConfig[] = this.orgless
       ? []
-      : [
-          'sfdx config:set restDeploy=false --global',
-          'sfdx force:org:create -d 1 -s -f config/project-scratch-def.json',
-        ];
+      : [{ executable: 'sf', duration: 1, setDefault: true, config: path.join('config', 'project-scratch-def.json') }];
 
     return await TestSession.create({
       project: { gitClone: this.repository },
-      setupCommands: [...setupCommands, ...this.setupCommands],
+      scratchOrgs: [...scratchOrgs, ...this.scratchOrgs],
       retries: 2,
     });
   }
@@ -579,13 +552,14 @@ export namespace SourceTestkit {
     readonly repository: string;
     readonly nut: string;
     readonly orgless?: boolean;
-    readonly setupCommands?: string[];
+    readonly scratchOrgs?: ScratchOrgConfig[];
   };
 
   export type CommandOpts = {
     exitCode: number;
     args: string;
     json: boolean;
+    cli: CLI;
   };
 }
 

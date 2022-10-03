@@ -294,6 +294,14 @@ export class Assertions {
   }
 
   /**
+   * Expect error json to include given message
+   */
+  public errorToHaveMessage(result: JsonMap, message: string): void {
+    expect(result).to.have.property('message');
+    expect(result.message, `error name to include ${message}`).to.include(message);
+  }
+
+  /**
    * Expect no apex tests to be run
    */
   public async noApexTestsToBeRun(): Promise<void> {
