@@ -19,6 +19,8 @@ import { countFiles, FileTracker } from './fileTracker';
 
 use(chaiEach);
 
+/* eslint-disable no-await-in-loop */
+
 /**
  * Assertions is a class that is designed to encapsulate common assertions we want to
  * make during NUT testings
@@ -184,6 +186,7 @@ export class Assertions {
   /**
    * Expects files to exist in convert output directory
    */
+  // eslint-disable-next-line class-methods-use-this
   public async filesToBeConverted(directory: string, globs: string[]): Promise<void> {
     directory = directory.split(path.sep).join('/');
     const fullGlobs = globs.map((glob) => [directory, glob].join('/'));
@@ -246,6 +249,7 @@ export class Assertions {
   /**
    * Expect status to return no results
    */
+  // eslint-disable-next-line class-methods-use-this
   public statusToBeEmpty(result: StatusResult): void {
     expect(result.length, 'status to have no results').to.equal(0);
   }
@@ -263,6 +267,7 @@ export class Assertions {
   /**
    * Expect given file to have the given state
    */
+  // eslint-disable-next-line class-methods-use-this
   public statusFileToHaveState(result: StatusResult, state: SourceState, file: string): void {
     const expectedFile = result.find((r) => r.filePath === file);
     expect(expectedFile, `${file} to be present in json response`).to.not.be.undefined;
@@ -272,6 +277,7 @@ export class Assertions {
   /**
    * Expect all given files to have the given state
    */
+  // eslint-disable-next-line class-methods-use-this
   public statusToOnlyHaveState(result: StatusResult, state: SourceState): void {
     const allStates = result.every((r) => r.state === state);
     expect(allStates, `all files to have ${state}`).to.be.true;
@@ -280,6 +286,7 @@ export class Assertions {
   /**
    * Expect all files to have a conflict state
    */
+  // eslint-disable-next-line class-methods-use-this
   public statusToOnlyHaveConflicts(result: StatusResult): void {
     const allConflicts = result.every((r) => r.state.includes('Conflict'));
     expect(allConflicts, 'all results to show conflict state').to.be.true;
@@ -288,6 +295,7 @@ export class Assertions {
   /**
    * Expect json to have given error name
    */
+  // eslint-disable-next-line class-methods-use-this
   public errorToHaveName(result: JsonMap, name: string): void {
     expect(result).to.have.property('name');
     expect(result.name, `error name to equal ${name}`).to.equal(name);
@@ -321,7 +329,9 @@ export class Assertions {
     const classIds = apexClasses.map((c) => c.Id);
     const executionTimestamp = this.executionLog.getLatestTimestamp(this.commands.deploy);
     const testResults = await this.retrieveApexTestResults();
-    const testsRunAfterTimestamp = testResults.filter((r) => new Date(r.TestTimestamp) > executionTimestamp && classIds.includes(r.ApexClassId));
+    const testsRunAfterTimestamp = testResults.filter(
+      (r) => new Date(r.TestTimestamp) > executionTimestamp && classIds.includes(r.ApexClassId)
+    );
 
     expect(testsRunAfterTimestamp.length, 'tests to be run during deploy').to.be.greaterThan(0);
   }
@@ -329,6 +339,7 @@ export class Assertions {
   /**
    * Expect result to have given property
    */
+  // eslint-disable-next-line class-methods-use-this
   public toHaveProperty(result: JsonMap, prop: string): void {
     expect(result).to.have.property(prop);
   }
@@ -336,6 +347,7 @@ export class Assertions {
   /**
    * Expect result to have given property and for that property to equal the given value
    */
+  // eslint-disable-next-line class-methods-use-this
   public toHavePropertyAndValue(result: JsonMap, prop: string, value: string | number): void {
     expect(result).to.have.property(prop);
     expect(result[prop], `${prop} to have value ${value.toString()}`).to.equal(value);
@@ -344,6 +356,7 @@ export class Assertions {
   /**
    * Expect result to have given property and for that property to NOT equal the given value
    */
+  // eslint-disable-next-line class-methods-use-this
   public toHavePropertyAndNotValue(result: JsonMap, prop: string, value: string | number): void {
     expect(result).to.have.property(prop);
     expect(result[prop], `${prop} to have value that does not equal ${value.toString()}`).to.not.equal(value);
@@ -357,7 +370,7 @@ export class Assertions {
       const assertionMessage = `expect RevisionCounter for ${sourceMember.MemberName} (${sourceMember.MemberType}) to be incremented`;
       const preCommandExecution = sourceMembers.find(
         (s) => s.MemberType === sourceMember.MemberType && s.MemberName === sourceMember.MemberName
-      ) || { RevisionCounter: 0 };
+      ) ?? { RevisionCounter: 0 };
       expect(sourceMember.RevisionCounter, assertionMessage).to.be.greaterThan(preCommandExecution.RevisionCounter);
     }
   }
@@ -375,7 +388,7 @@ export class Assertions {
         const assertionMessage = `expect RevisionCounter for ${sourceMember.MemberName} (${sourceMember.MemberType}) to NOT be incremented`;
         const preCommandExecution = sourceMembers.find(
           (s) => s.MemberType === sourceMember.MemberType && s.MemberName === sourceMember.MemberName
-        ) || { RevisionCounter: 0 };
+        ) ?? { RevisionCounter: 0 };
         expect(sourceMember.RevisionCounter, assertionMessage).to.equal(preCommandExecution.RevisionCounter);
       }
     }
@@ -387,7 +400,7 @@ export class Assertions {
     const someAreNotUpdated = latestSourceMembers.some((sourceMember) => {
       const preCommandExecution = sourceMembers.find(
         (s) => s.MemberType === sourceMember.MemberType && s.MemberName === sourceMember.MemberName
-      ) || { RevisionCounter: 0 };
+      ) ?? { RevisionCounter: 0 };
       return sourceMember.RevisionCounter === preCommandExecution.RevisionCounter;
     });
     expect(someAreNotUpdated, 'expect some SourceMembers to not be updated').to.be.true;
@@ -414,19 +427,21 @@ export class Assertions {
         }
       }
     }
-    return (result?.records || []).filter((sourceMember) => membersMap.get(sourceMember.MemberType)?.has(sourceMember.MemberName));
+    return (result?.records ?? []).filter((sourceMember) =>
+      membersMap.get(sourceMember.MemberType)?.has(sourceMember.MemberName)
+    );
   }
 
   private async retrieveApexTestResults(): Promise<ApexTestResult[]> {
     const query = 'SELECT TestTimestamp, ApexClassId FROM ApexTestResult';
     const result = await this.connection?.tooling.query<ApexTestResult>(query, { autoFetch: true, maxFetch: 50_000 });
-    return result?.records || [];
+    return result?.records ?? [];
   }
 
   private async retrieveApexClasses(classNames?: string[]): Promise<ApexClass[]> {
     const query = 'SELECT Name,Id FROM ApexClass';
     const result = await this.connection?.tooling.query<ApexClass>(query, { autoFetch: true, maxFetch: 50_000 });
-    const records = result?.records || [];
+    const records = result?.records ?? [];
     return classNames ? records.filter((r) => classNames.includes(r.Name)) : records;
   }
 

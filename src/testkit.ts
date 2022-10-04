@@ -6,6 +6,7 @@
  */
 
 /* eslint-disable no-console */
+/* eslint-disable no-await-in-loop */
 
 import * as path from 'path';
 import * as os from 'os';
@@ -78,7 +79,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     this.executable = options.executable ?? which('sfdx')?.stdout ?? 'sfdx';
     this.repository = options.repository;
     this.orgless = !!options.orgless;
-    this.setupCommands = options.setupCommands || [];
+    this.setupCommands = options.setupCommands ?? [];
     this.nut = path.basename(options.nut);
     this.debug = debug(`sourceTestkit:${this.nut}`);
   }
@@ -169,6 +170,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    * Installs a package into the scratch org. This method uses shelljs instead of testkit because
    * we can't add plugin-package as a dev plugin yet.
    */
+  // eslint-disable-next-line class-methods-use-this
   public installPackage(id: string): void {
     exec(`sfdx force:package:install --noprompt --package ${id} --wait 5 --json 2> /dev/null`, { silent: true });
   }
@@ -242,6 +244,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   /**
    * Write file
    */
+  // eslint-disable-next-line class-methods-use-this
   public async writeFile(filename: string, contents: string): Promise<void> {
     return fs.promises.writeFile(filename, contents);
   }
@@ -397,6 +400,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    * in the same location as toolbelt so we have to find it within the output
    * dir, move it, and delete the generated dir.
    */
+  // eslint-disable-next-line class-methods-use-this
   public findAndMoveManifest(dir: string): void {
     const manifest = find(dir).filter((file) => file.endsWith('package.xml'));
     if (!manifest?.length) {
@@ -462,7 +466,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       this.packageNames = this.packages.map((p) => p.name);
       this.packagePaths = this.packages.map((p) => p.fullPath);
       this.packageGlobs = this.packages.map((p) => `${p.path}/**/*`);
-      this.username = await this.getDefaultUsername();
+      this.username = await getDefaultUsername();
       this.connection = await this.createConnection();
       const context = {
         connection: this.connection,
@@ -536,20 +540,6 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     });
   }
 
-  private async getDefaultUsername(): Promise<string> {
-    const configVar = 'target-org';
-    const configResult = execCmd<Array<{ key?: string; name?: string; value: string }>>(
-      `config:get ${configVar} --json`
-    ).jsonOutput?.result;
-    // depending on which version of config:get the user has available, there may be a name or key
-    // eventually, drop the `key` option and the deprecated SfdxPropertyKeys
-    const possibleKeys = [configVar, SfdxPropertyKeys.DEFAULT_USERNAME];
-    const username = configResult?.find(
-      (r) => (r.key && possibleKeys.includes(r.key)) || (r.name && possibleKeys.includes(r.name))
-    )?.value;
-    return username!;
-  }
-
   private async createConnection(): Promise<Nullable<Connection>> {
     if (this.orgless) return;
     const conn = await Connection.create({
@@ -609,4 +599,17 @@ export const COMMANDS = {
     deploy: 'deploy metadata',
     retrieve: 'retrieve metadata',
   },
+};
+
+const getDefaultUsername = async (): Promise<string> => {
+  const configVar = 'target-org';
+  const configResult = execCmd<Array<{ key?: string; name?: string; value: string }>>(`config:get ${configVar} --json`)
+    .jsonOutput?.result;
+  // depending on which version of config:get the user has available, there may be a name or key
+  // eventually, drop the `key` option and the deprecated SfdxPropertyKeys
+  const possibleKeys = [configVar, SfdxPropertyKeys.DEFAULT_USERNAME];
+  const username = configResult?.find(
+    (r) => (r.key && possibleKeys.includes(r.key)) || (r.name && possibleKeys.includes(r.name))
+  )?.value;
+  return username!;
 };

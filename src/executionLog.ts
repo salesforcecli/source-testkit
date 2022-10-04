@@ -23,9 +23,9 @@ export class ExecutionLog {
    */
   public async add(cmd: string): Promise<void> {
     const baseCmd = ensureString(
-      Object.values(this.context.commands).find((c) => cmd.startsWith(c)) || cmd.split(' -')[0]
+      Object.values(this.context.commands).find((c) => cmd.startsWith(c)) ?? cmd.split(' -')[0]
     );
-    const existingEntries = this.log.get(baseCmd) || [];
+    const existingEntries = this.log.get(baseCmd) ?? [];
     const sourceMembers =
       baseCmd.includes(this.context.commands.deploy) || baseCmd.includes(this.context.commands.push)
         ? await this.querySourceMembers()
@@ -50,7 +50,7 @@ export class ExecutionLog {
    * Return the most recent entry for a command
    */
   public getLatest(cmd: string): ExecutionLog.Details {
-    const log = this.log.get(cmd) || [];
+    const log = this.log.get(cmd) ?? [];
     const sorted = log.sort((a, b) => (a.timestamp < b.timestamp ? 1 : -1));
     return sorted[0];
   }
@@ -61,7 +61,7 @@ export class ExecutionLog {
       autoFetch: true,
       maxFetch: 50_000,
     });
-    return result?.records || [];
+    return result?.records ?? [];
   }
 }
 
