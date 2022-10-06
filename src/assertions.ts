@@ -304,6 +304,7 @@ export class Assertions {
   /**
    * Expect error json to include given message
    */
+  // eslint-disable-next-line class-methods-use-this
   public errorToHaveMessage(result: JsonMap, message: string): void {
     expect(result).to.have.property('message');
     expect(result.message, `error name to include ${message}`).to.include(message);
