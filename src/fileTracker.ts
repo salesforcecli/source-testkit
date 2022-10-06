@@ -10,6 +10,8 @@ import * as crypto from 'crypto';
 import { Nullable } from '@salesforce/ts-types';
 import { Context } from './types';
 
+/* eslint-disable no-await-in-loop */
+
 /**
  * This class maintains a map of tracked files. This is particularly useful
  * for determining if files have changed after a command has been executed
@@ -35,7 +37,7 @@ export class FileTracker {
    * Returns tracked file's history
    */
   public get(file: string): FileTracker.FileHistory[] {
-    return this.files.get(file) || [];
+    return this.files.get(file) ?? [];
   }
 
   /**

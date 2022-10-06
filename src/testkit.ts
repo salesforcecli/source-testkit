@@ -6,6 +6,7 @@
  */
 
 /* eslint-disable no-console */
+/* eslint-disable no-await-in-loop */
 
 import * as path from 'path';
 import * as os from 'os';
@@ -75,7 +76,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     super(options);
     this.repository = options.repository;
     this.orgless = !!options.orgless;
-    this.scratchOrgs = options.scratchOrgs || [];
+    this.scratchOrgs = options.scratchOrgs ?? [];
     this.nut = path.basename(options.nut);
     this.debug = debug(`sourceTestkit:${this.nut}`);
   }
@@ -166,6 +167,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    * Installs a package into the scratch org. This method uses shelljs instead of testkit because
    * we can't add plugin-package as a dev plugin yet.
    */
+  // eslint-disable-next-line class-methods-use-this
   public installPackage(id: string): void {
     exec(`sfdx force:package:install --noprompt --package ${id} --wait 5 --json 2> /dev/null`, { silent: true });
   }
@@ -178,7 +180,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   public async assignPermissionSet(
     options: Partial<SourceTestkit.CommandOpts> = {}
   ): Promise<Result<{ success: [{ name: string; value: string }]; failures: [{ name: string; value: string }] }>> {
-    return await this.execute('force:user:permset:assign', options);
+    return this.execute('force:user:permset:assign', options);
   }
 
   /**
@@ -239,6 +241,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   /**
    * Write file
    */
+  // eslint-disable-next-line class-methods-use-this
   public async writeFile(filename: string, contents: string): Promise<void> {
     return fs.promises.writeFile(filename, contents);
   }
@@ -385,6 +388,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
    * in the same location as toolbelt so we have to find it within the output
    * dir, move it, and delete the generated dir.
    */
+  // eslint-disable-next-line class-methods-use-this
   public findAndMoveManifest(dir: string): void {
     const manifest = find(dir).filter((file) => file.endsWith('package.xml'));
     if (!manifest?.length) {
@@ -435,7 +439,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
     }
 
     try {
-      this.executableName = await this.getExecutableName();
+      this.executableName = await getExecutableName();
       this.commands = COMMANDS[this.executableName];
       this.metadataResolver = new MetadataResolver();
       this.session = await this.createSession();
@@ -445,7 +449,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       this.packageNames = this.packages.map((p) => p.name);
       this.packagePaths = this.packages.map((p) => p.fullPath);
       this.packageGlobs = this.packages.map((p) => `${p.path}/**/*`);
-      this.username = await this.getDefaultUsername();
+      this.username = await getDefaultUsername();
       this.connection = await this.createConnection();
       const context = {
         connection: this.connection,
@@ -464,12 +468,6 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       const error = err as Error;
       await this.handleError(error, true);
     }
-  }
-
-  private async getExecutableName(): Promise<Executable> {
-    const pkgJsonPath = path.join(process.cwd(), 'package.json');
-    const pkgJson = parseJsonMap<{ oclif: { bin: string } }>(await fs.promises.readFile(pkgJsonPath, 'utf8'));
-    return pkgJson.oclif.bin as Executable;
   }
 
   private getCommandString(cmdKey: string): string {
@@ -502,26 +500,12 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       ? []
       : [{ executable: 'sf', duration: 1, setDefault: true, config: path.join('config', 'project-scratch-def.json') }];
 
-    return await TestSession.create({
+    return TestSession.create({
       project: { gitClone: this.repository },
       devhubAuthStrategy: 'AUTO',
       scratchOrgs: [...scratchOrgs, ...this.scratchOrgs],
       retries: 2,
     });
-  }
-
-  private async getDefaultUsername(): Promise<string> {
-    const configVar = 'target-org';
-    const configResult = execCmd<Array<{ key?: string; name?: string; value: string }>>(
-      `config:get ${configVar} --json`
-    ).jsonOutput?.result;
-    // depending on which version of config:get the user has available, there may be a name or key
-    // eventually, drop the `key` option and the deprecated SfdxPropertyKeys
-    const possibleKeys = [configVar, SfdxPropertyKeys.DEFAULT_USERNAME];
-    const username = configResult?.find(
-      (r) => (r.key && possibleKeys.includes(r.key)) || (r.name && possibleKeys.includes(r.name))
-    )?.value;
-    return username!;
   }
 
   private async createConnection(): Promise<Nullable<Connection>> {
@@ -584,4 +568,23 @@ export const COMMANDS = {
     deploy: 'deploy metadata',
     retrieve: 'retrieve metadata',
   },
+};
+
+const getDefaultUsername = async (): Promise<string> => {
+  const configVar = 'target-org';
+  const configResult = execCmd<Array<{ key?: string; name?: string; value: string }>>(`config:get ${configVar} --json`)
+    .jsonOutput?.result;
+  // depending on which version of config:get the user has available, there may be a name or key
+  // eventually, drop the `key` option and the deprecated SfdxPropertyKeys
+  const possibleKeys = [configVar, SfdxPropertyKeys.DEFAULT_USERNAME];
+  const username = configResult?.find(
+    (r) => (r.key && possibleKeys.includes(r.key)) || (r.name && possibleKeys.includes(r.name))
+  )?.value;
+  return username!;
+};
+
+const getExecutableName = async (): Promise<Executable> => {
+  const pkgJsonPath = path.join(process.cwd(), 'package.json');
+  const pkgJson = parseJsonMap<{ oclif: { bin: string } }>(await fs.promises.readFile(pkgJsonPath, 'utf8'));
+  return pkgJson.oclif.bin as Executable;
 };
