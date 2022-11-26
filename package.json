@@ -33,7 +33,7 @@
     "@salesforce/cli-plugins-testkit": "^3.2.9",
     "@salesforce/core": "^3.31.17",
     "@salesforce/kit": "^1.7.1",
-    "@salesforce/source-deploy-retrieve": "^7.5.2",
+    "@salesforce/source-deploy-retrieve": "^7.5.13",
     "@salesforce/ts-types": "^1.7.0",
     "archiver": "^5.2.0",
     "chai-each": "^0.0.1",
