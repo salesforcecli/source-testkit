@@ -32,7 +32,7 @@
   "dependencies": {
     "@salesforce/cli-plugins-testkit": "^3.2.15",
     "@salesforce/core": "^3.32.12",
-    "@salesforce/kit": "^1.7.1",
+    "@salesforce/kit": "^1.8.2",
     "@salesforce/source-deploy-retrieve": "^7.5.19",
     "@salesforce/ts-types": "^1.7.0",
     "archiver": "^5.2.0",
