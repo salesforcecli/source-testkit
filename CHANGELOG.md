@@ -1,3 +1,12 @@
+## [2.0.30](https://github.com/salesforcecli/source-testkit/compare/2.0.29...2.0.30) (2023-01-07)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/kit from 1.8.0 to 1.8.2 ([#202](https://github.com/salesforcecli/source-testkit/issues/202)) ([04af20d](https://github.com/salesforcecli/source-testkit/commit/04af20d9f44075fe1b612cf2b2b8573d7c06c044))
+
+
+
 ## [2.0.29](https://github.com/salesforcecli/source-testkit/compare/2.0.28...2.0.29) (2022-12-31)
 
 
