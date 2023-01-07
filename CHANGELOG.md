@@ -1,3 +1,12 @@
+## [2.0.31](https://github.com/salesforcecli/source-testkit/compare/2.0.30...2.0.31) (2023-01-07)
+
+
+### Bug Fixes
+
+* **deps:** bump json5 from 1.0.1 to 1.0.2 ([#204](https://github.com/salesforcecli/source-testkit/issues/204)) ([9acf897](https://github.com/salesforcecli/source-testkit/commit/9acf897847db3aa056714551f24328e02a5b9d00))
+
+
+
 ## [2.0.30](https://github.com/salesforcecli/source-testkit/compare/2.0.29...2.0.30) (2023-01-07)
 
 
