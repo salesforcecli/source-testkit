@@ -1,3 +1,12 @@
+## [2.0.37](https://github.com/salesforcecli/source-testkit/compare/2.0.36...2.0.37) (2023-02-04)
+
+
+### Bug Fixes
+
+* **deps:** bump http-cache-semantics from 4.1.0 to 4.1.1 ([#227](https://github.com/salesforcecli/source-testkit/issues/227)) ([b317c9e](https://github.com/salesforcecli/source-testkit/commit/b317c9e61533faf8e2e5d1566d1686ca81c8f5a9))
+
+
+
 ## [2.0.36](https://github.com/salesforcecli/source-testkit/compare/2.0.35...2.0.36) (2023-01-28)
 
 
