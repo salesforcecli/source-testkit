@@ -717,10 +717,10 @@
   resolved "https://registry.yarnpkg.com/@salesforce/schemas/-/schemas-1.4.0.tgz#7dff427c8059895d8108176047aee600703c82d6"
   integrity sha512-BJ25uphssN42Zy6kksheFHMTLiR98AAHe/Wxnv0T4dYxtrEbUjSXVAGKZqfewJPFXA4xB5gxC+rQZtfz6xKCFg==
 
-"@salesforce/source-deploy-retrieve@^7.9.1":
-  version "7.9.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-7.9.1.tgz#25567787a95528f45a5a2306c1b087dd67a316e4"
-  integrity sha512-sWQmW35irfEYqFlc6kCo+pRimN9X5d+cCnOJ5zTRWvALcCDce5j/OhPb8qPVMWV4sciHO+RbdMYHJAMppOXrJg==
+"@salesforce/source-deploy-retrieve@^7.10.0":
+  version "7.10.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-7.10.0.tgz#6e56ccd155a60db00ec61d0c083c182ca916a2f3"
+  integrity sha512-MqnHHKm6AI9zM5soAMK/xmfQYe42MeLN9B/Zs1v/4RYI9hNGbbnKvvdxsfEcmWULL0UMsn7+AJ/q4kcJBLvIcw==
   dependencies:
     "@salesforce/core" "^3.33.1"
     "@salesforce/kit" "^1.8.4"
@@ -731,7 +731,7 @@
     graceful-fs "^4.2.10"
     ignore "^5.2.4"
     mime "2.6.0"
-    minimatch "^5.1.2"
+    minimatch "^5.1.6"
     proxy-agent "^5.0.0"
     proxy-from-env "^1.1.0"
     unzipper "0.10.11"
@@ -4206,10 +4206,10 @@ minimatch@4.2.1:
   dependencies:
     brace-expansion "^1.1.7"
 
-minimatch@^5.1.0, minimatch@^5.1.2:
-  version "5.1.2"
-  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.2.tgz#0939d7d6f0898acbd1508abe534d1929368a8fff"
-  integrity sha512-bNH9mmM9qsJ2X4r2Nat1B//1dJVcn3+iBLa3IgqJ7EbGaDNepL9QSHOxN4ng33s52VMMhhIfgCYDk3C4ZmlDAg==
+minimatch@^5.1.0, minimatch@^5.1.6:
+  version "5.1.6"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-5.1.6.tgz#1cfcb8cf5522ea69952cd2af95ae09477f122a96"
+  integrity sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==
   dependencies:
     brace-expansion "^2.0.1"
 
