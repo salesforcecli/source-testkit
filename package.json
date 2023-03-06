@@ -8,7 +8,7 @@
   "types": "lib/index.d.ts",
   "repository": "salesforcecli/source-testkit",
   "scripts": {
-    "build": "sf-build && yarn copy-metadata",
+    "build": "wireit",
     "ci-docs": "yarn sf-ci-docs",
     "clean": "sf-clean",
     "clean-all": "sf-clean all",
@@ -84,7 +84,7 @@
       ]
     },
     "compile": {
-      "command": "tsc -p . --pretty --incremental",
+      "command": "tsc -p . --pretty --incremental && yarn copy-metadata",
       "files": [
         "src/**/*.ts",
         "tsconfig.json",
