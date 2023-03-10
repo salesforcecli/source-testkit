@@ -32,15 +32,14 @@
   "dependencies": {
     "@salesforce/cli-plugins-testkit": "^3.2.23",
     "@salesforce/core": "^3.33.6",
-    "@salesforce/kit": "^1.8.3",
-    "@salesforce/source-deploy-retrieve": "^7.10.1",
-    "@salesforce/ts-types": "^1.7.0",
+    "@salesforce/kit": "^1.9.2",
+    "@salesforce/source-deploy-retrieve": "^7.11.3",
+    "@salesforce/ts-types": "^1.7.3",
     "archiver": "^5.2.0",
     "chai-each": "^0.0.1",
     "debug": "^4.3.1",
     "shelljs": "^0.8.4",
-    "sinon": "^10.0.0",
-    "strip-ansi": "^7.0.1"
+    "sinon": "^10.0.0"
   },
   "devDependencies": {
     "@salesforce/dev-config": "^3.0.0",
