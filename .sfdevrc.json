@@ -2,5 +2,13 @@
   "test": {
     "testsPath": "test/**/*.test.ts"
   },
-  "exclude-scripts": ["build", "prepack"]
+  "exclude-scripts": ["prepack"],
+  "wireit": {
+    "compile": {
+      "command": "tsc -p . --pretty --incremental && yarn copy-metadata",
+      "files": ["src/**/*.ts", "tsconfig.json", "messages/**"],
+      "output": ["lib/**", "*.tsbuildinfo"],
+      "clean": "if-file-deleted"
+    }
+  }
 }
