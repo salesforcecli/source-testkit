@@ -443,7 +443,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
       this.commands = COMMANDS[this.executableName];
       this.metadataResolver = new MetadataResolver();
       this.session = await this.createSession();
-      this.projectDir = this.session.project!.dir;
+      this.projectDir = this.session.project.dir;
       const sfProject = await SfProject.resolve(this.projectDir);
       this.packages = sfProject.getPackageDirectories();
       this.packageNames = this.packages.map((p) => p.name);
