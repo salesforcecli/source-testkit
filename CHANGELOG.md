@@ -1,3 +1,12 @@
+## [2.0.45](https://github.com/salesforcecli/source-testkit/compare/2.0.44...2.0.45) (2023-03-18)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/source-deploy-retrieve from 7.11.3 to 7.12.0 ([#256](https://github.com/salesforcecli/source-testkit/issues/256)) ([10e7d1d](https://github.com/salesforcecli/source-testkit/commit/10e7d1d21f85a4636c7eca57e96e444e88d416e7))
+
+
+
 ## [2.0.44](https://github.com/salesforcecli/source-testkit/compare/2.0.43...2.0.44) (2023-03-18)
 
 
