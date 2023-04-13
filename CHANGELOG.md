@@ -1,3 +1,12 @@
+## [2.0.52](https://github.com/salesforcecli/source-testkit/compare/2.0.51...2.0.52) (2023-04-13)
+
+
+### Bug Fixes
+
+* **deps:** bump vm2 from 3.9.15 to 3.9.16 ([#276](https://github.com/salesforcecli/source-testkit/issues/276)) ([12a6d5a](https://github.com/salesforcecli/source-testkit/commit/12a6d5a6479501164395efd88b21becb8961d47a))
+
+
+
 ## [2.0.51](https://github.com/salesforcecli/source-testkit/compare/2.0.50...2.0.51) (2023-04-09)
 
 
