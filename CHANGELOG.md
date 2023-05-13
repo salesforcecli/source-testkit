@@ -1,3 +1,12 @@
+## [2.0.60](https://github.com/salesforcecli/source-testkit/compare/2.0.59...2.0.60) (2023-05-13)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/core from 3.36.0 to 3.36.1 ([#301](https://github.com/salesforcecli/source-testkit/issues/301)) ([6b335f3](https://github.com/salesforcecli/source-testkit/commit/6b335f3e966c57f0f3c5971b610bb266ce0cfda0))
+
+
+
 ## [2.0.59](https://github.com/salesforcecli/source-testkit/compare/2.0.58...2.0.59) (2023-05-07)
 
 
