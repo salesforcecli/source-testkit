@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/salesforcecli/source-testkit/compare/2.0.63...2.1.0) (2023-05-31)
+
+
+### Features
+
+* node16+, dev-scripts, core4 ([#313](https://github.com/salesforcecli/source-testkit/issues/313)) ([e4a078e](https://github.com/salesforcecli/source-testkit/commit/e4a078ec32b96535a8f2924eb8b1fe57eec67e75))
+
+
+
 ## [2.0.63](https://github.com/salesforcecli/source-testkit/compare/2.0.62...2.0.63) (2023-05-27)
 
 
