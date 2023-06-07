@@ -1,3 +1,12 @@
+## [2.1.2](https://github.com/salesforcecli/source-testkit/compare/2.1.1...2.1.2) (2023-06-07)
+
+
+### Bug Fixes
+
+* **deps:** bump fast-xml-parser from 4.2.2 to 4.2.4 ([#319](https://github.com/salesforcecli/source-testkit/issues/319)) ([468bb18](https://github.com/salesforcecli/source-testkit/commit/468bb1811acf9c94528a77438a532f4e86c9c237))
+
+
+
 ## [2.1.1](https://github.com/salesforcecli/source-testkit/compare/2.1.0...2.1.1) (2023-06-03)
 
 
