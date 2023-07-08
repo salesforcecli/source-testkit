@@ -1,3 +1,12 @@
+## [2.1.11](https://github.com/salesforcecli/source-testkit/compare/2.1.10...2.1.11) (2023-07-08)
+
+
+### Bug Fixes
+
+* **deps:** bump tough-cookie from 4.0.0 to 4.1.3 ([#346](https://github.com/salesforcecli/source-testkit/issues/346)) ([71d9071](https://github.com/salesforcecli/source-testkit/commit/71d907122feb120cee91bac8e42efb186c15feea))
+
+
+
 ## [2.1.10](https://github.com/salesforcecli/source-testkit/compare/2.1.9...2.1.10) (2023-07-01)
 
 
