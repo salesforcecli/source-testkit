@@ -1,3 +1,12 @@
+## [2.1.15](https://github.com/salesforcecli/source-testkit/compare/2.1.14...2.1.15) (2023-07-11)
+
+
+### Bug Fixes
+
+* **deps:** bump semver from 5.7.1 to 5.7.2 ([#347](https://github.com/salesforcecli/source-testkit/issues/347)) ([ca5f3a9](https://github.com/salesforcecli/source-testkit/commit/ca5f3a95eb222f1461847c74972342e057051279))
+
+
+
 ## [2.1.14](https://github.com/salesforcecli/source-testkit/compare/2.1.13...2.1.14) (2023-07-09)
 
 
