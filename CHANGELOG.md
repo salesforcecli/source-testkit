@@ -1,3 +1,12 @@
+## [2.1.16](https://github.com/salesforcecli/source-testkit/compare/2.1.15...2.1.16) (2023-07-15)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/ts-types from 2.0.3 to 2.0.5 ([#352](https://github.com/salesforcecli/source-testkit/issues/352)) ([7f961c4](https://github.com/salesforcecli/source-testkit/commit/7f961c40b5ad733fb04acb9a8a6e45f4bff96e34))
+
+
+
 ## [2.1.15](https://github.com/salesforcecli/source-testkit/compare/2.1.14...2.1.15) (2023-07-11)
 
 
