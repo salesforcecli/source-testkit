@@ -1,3 +1,12 @@
+## [2.1.18](https://github.com/salesforcecli/source-testkit/compare/2.1.17...2.1.18) (2023-07-19)
+
+
+### Bug Fixes
+
+* **deps:** bump word-wrap from 1.2.3 to 1.2.4 ([#354](https://github.com/salesforcecli/source-testkit/issues/354)) ([6573835](https://github.com/salesforcecli/source-testkit/commit/6573835a975926e9d4b0ae74983f4b4dff8a8839))
+
+
+
 ## [2.1.17](https://github.com/salesforcecli/source-testkit/compare/2.1.16...2.1.17) (2023-07-15)
 
 
