@@ -1,3 +1,12 @@
+## [2.1.23](https://github.com/salesforcecli/source-testkit/compare/2.1.22...2.1.23) (2023-07-29)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/core from 4.3.10 to 4.3.11 ([#361](https://github.com/salesforcecli/source-testkit/issues/361)) ([6ae0cc0](https://github.com/salesforcecli/source-testkit/commit/6ae0cc01ab1a9799097e0a08bde3dbd32dee8e6f))
+
+
+
 ## [2.1.22](https://github.com/salesforcecli/source-testkit/compare/2.1.21...2.1.22) (2023-07-29)
 
 
