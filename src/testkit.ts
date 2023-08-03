@@ -13,10 +13,10 @@ import * as os from 'os';
 import * as fs from 'fs';
 import * as fg from 'fast-glob';
 import { exec, find, mv, rm } from 'shelljs';
-import { TestSession, execCmd, ScratchOrgConfig, CLI } from '@salesforce/cli-plugins-testkit';
-import { AsyncCreatable, Env, set, parseJsonMap } from '@salesforce/kit';
+import { CLI, execCmd, ScratchOrgConfig, TestSession } from '@salesforce/cli-plugins-testkit';
+import { AsyncCreatable, Env, parseJsonMap, set } from '@salesforce/kit';
 import { AnyJson, Dictionary, ensureString, JsonMap, Nullable } from '@salesforce/ts-types';
-import { AuthInfo, Connection, NamedPackageDir, SfProject, SfdxPropertyKeys } from '@salesforce/core';
+import { AuthInfo, Connection, NamedPackageDir, SfdxPropertyKeys, SfProject } from '@salesforce/core';
 import { debug, Debugger } from 'debug';
 import { MetadataResolver } from '@salesforce/source-deploy-retrieve';
 import { Commands, Result, StatusResult } from './types';
@@ -498,7 +498,7 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
   private async createSession(): Promise<TestSession> {
     const scratchOrgs: ScratchOrgConfig[] = this.orgless
       ? []
-      : [{ executable: 'sf', duration: 1, setDefault: true, config: path.join('config', 'project-scratch-def.json') }];
+      : [{ duration: 1, setDefault: true, config: path.join('config', 'project-scratch-def.json') }];
 
     return TestSession.create({
       project: { gitClone: this.repository },
@@ -510,10 +510,9 @@ export class SourceTestkit extends AsyncCreatable<SourceTestkit.Options> {
 
   private async createConnection(): Promise<Nullable<Connection>> {
     if (this.orgless) return;
-    const conn = await Connection.create({
+    return Connection.create({
       authInfo: await AuthInfo.create({ username: this.username }),
     });
-    return conn;
   }
 
   private async doGlob(globs: string[]): Promise<string[]> {
