@@ -37,7 +37,7 @@
     "@salesforce/core": "^4.3.11",
     "@salesforce/kit": "^3.0.4",
     "@salesforce/source-deploy-retrieve": "^9.6.0",
-    "@salesforce/ts-types": "^2.0.5",
+    "@salesforce/ts-types": "^2.0.6",
     "archiver": "^5.2.0",
     "chai-each": "^0.0.1",
     "debug": "^4.3.1",
