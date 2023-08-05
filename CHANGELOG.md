@@ -1,3 +1,12 @@
+## [2.1.25](https://github.com/salesforcecli/source-testkit/compare/2.1.24...2.1.25) (2023-08-05)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/kit from 3.0.6 to 3.0.8 ([#368](https://github.com/salesforcecli/source-testkit/issues/368)) ([ac56bb0](https://github.com/salesforcecli/source-testkit/commit/ac56bb0ba05b8b3d4e94c69733e6a4243c3555d2))
+
+
+
 ## [2.1.24](https://github.com/salesforcecli/source-testkit/compare/2.1.23...2.1.24) (2023-08-05)
 
 
