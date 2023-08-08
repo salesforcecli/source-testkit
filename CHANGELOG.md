@@ -1,3 +1,12 @@
+## [2.1.26](https://github.com/salesforcecli/source-testkit/compare/2.1.25...2.1.26) (2023-08-08)
+
+
+### Bug Fixes
+
+* **deps:** core5 ([dfade86](https://github.com/salesforcecli/source-testkit/commit/dfade86ba2edec8d7a62016484ea610ea99367df))
+
+
+
 ## [2.1.25](https://github.com/salesforcecli/source-testkit/compare/2.1.24...2.1.25) (2023-08-05)
 
 
