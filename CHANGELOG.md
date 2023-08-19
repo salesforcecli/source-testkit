@@ -1,3 +1,12 @@
+## [2.1.29](https://github.com/salesforcecli/source-testkit/compare/2.1.28...2.1.29) (2023-08-19)
+
+
+### Bug Fixes
+
+* **deps:** bump archiver from 5.3.1 to 5.3.2 ([#382](https://github.com/salesforcecli/source-testkit/issues/382)) ([9dde443](https://github.com/salesforcecli/source-testkit/commit/9dde44397c0c534df4ae57604d387fa38ab78f11))
+
+
+
 ## [2.1.28](https://github.com/salesforcecli/source-testkit/compare/2.1.27...2.1.28) (2023-08-12)
 
 
