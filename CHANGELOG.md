@@ -1,3 +1,12 @@
+## [2.1.39](https://github.com/salesforcecli/source-testkit/compare/2.1.38...2.1.39) (2023-09-09)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/core from 5.2.5 to 5.2.7 ([#395](https://github.com/salesforcecli/source-testkit/issues/395)) ([42f7c60](https://github.com/salesforcecli/source-testkit/commit/42f7c602804ea58ec09b357894cef8d5c8873955))
+
+
+
 ## [2.1.38](https://github.com/salesforcecli/source-testkit/compare/2.1.37...2.1.38) (2023-09-09)
 
 
