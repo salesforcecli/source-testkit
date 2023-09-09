@@ -1,3 +1,12 @@
+## [2.1.38](https://github.com/salesforcecli/source-testkit/compare/2.1.37...2.1.38) (2023-09-09)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/source-deploy-retrieve from 9.7.8 to 9.7.10 ([#396](https://github.com/salesforcecli/source-testkit/issues/396)) ([9da2c21](https://github.com/salesforcecli/source-testkit/commit/9da2c21002eda652d4ae345437ebd251fca82fd0))
+
+
+
 ## [2.1.37](https://github.com/salesforcecli/source-testkit/compare/2.1.36...2.1.37) (2023-09-02)
 
 
