@@ -34,7 +34,7 @@
   ],
   "dependencies": {
     "@salesforce/cli-plugins-testkit": "^4.3.4",
-    "@salesforce/core": "^5.2.7",
+    "@salesforce/core": "^5.2.9",
     "@salesforce/kit": "^3.0.11",
     "@salesforce/source-deploy-retrieve": "^9.7.13",
     "@salesforce/ts-types": "^2.0.6",
