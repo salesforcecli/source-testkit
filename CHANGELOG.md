@@ -1,3 +1,9 @@
+## [2.1.44](https://github.com/salesforcecli/source-testkit/compare/2.1.43...2.1.44) (2023-09-23)
+
+### Bug Fixes
+
+- **deps:** bump @salesforce/core from 5.2.9 to 5.2.10 ([#407](https://github.com/salesforcecli/source-testkit/issues/407)) ([7a475d7](https://github.com/salesforcecli/source-testkit/commit/7a475d7710050d1f880b6972bb63259a4f6aad31))
+
 ## [2.1.43](https://github.com/salesforcecli/source-testkit/compare/2.1.42...2.1.43) (2023-09-16)
 
 ### Bug Fixes
