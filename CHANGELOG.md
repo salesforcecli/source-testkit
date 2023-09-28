@@ -1,3 +1,9 @@
+## [2.1.47](https://github.com/salesforcecli/source-testkit/compare/2.1.46...2.1.47) (2023-09-28)
+
+### Bug Fixes
+
+- **deps:** bump get-func-name from 2.0.0 to 2.0.2 ([#408](https://github.com/salesforcecli/source-testkit/issues/408)) ([bda6490](https://github.com/salesforcecli/source-testkit/commit/bda6490db3a5818f99eb04941f8656c04a5f9967))
+
 ## [2.1.46](https://github.com/salesforcecli/source-testkit/compare/2.1.45...2.1.46) (2023-09-24)
 
 ### Bug Fixes
