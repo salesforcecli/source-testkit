@@ -1,3 +1,9 @@
+## [2.1.55](https://github.com/salesforcecli/source-testkit/compare/2.1.54...2.1.55) (2023-10-17)
+
+### Bug Fixes
+
+- **deps:** bump @babel/traverse from 7.14.2 to 7.23.2 ([#424](https://github.com/salesforcecli/source-testkit/issues/424)) ([5bed234](https://github.com/salesforcecli/source-testkit/commit/5bed2346114814c2dff65da66aab4f648c870f25))
+
 ## [2.1.54](https://github.com/salesforcecli/source-testkit/compare/2.1.53...2.1.54) (2023-10-14)
 
 ### Bug Fixes
