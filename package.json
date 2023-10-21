@@ -51,7 +51,7 @@
     "@salesforce/ts-sinon": "^1.4.17",
     "@types/archiver": "^5.3.2",
     "@types/debug": "^4.1.9",
-    "@types/shelljs": "^0.8.12",
+    "@types/shelljs": "^0.8.14",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "chai": "^4.3.10",
