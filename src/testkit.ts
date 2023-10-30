@@ -8,9 +8,9 @@
 /* eslint-disable no-console */
 /* eslint-disable no-await-in-loop */
 
-import * as path from 'path';
-import * as os from 'os';
-import * as fs from 'fs';
+import * as path from 'node:path';
+import * as os from 'node:os';
+import * as fs from 'node:fs';
 import * as fg from 'fast-glob';
 import { exec, find, mv, rm } from 'shelljs';
 import { CLI, execCmd, ScratchOrgConfig, TestSession } from '@salesforce/cli-plugins-testkit';
