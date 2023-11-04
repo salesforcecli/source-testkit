@@ -556,14 +556,14 @@
     strip-ansi "6.0.1"
     ts-retry-promise "^0.7.1"
 
-"@salesforce/core@^5.3.1", "@salesforce/core@^5.3.14", "@salesforce/core@^5.3.5":
-  version "5.3.14"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-5.3.14.tgz#a5a3d02be6727492469ed39b23eaf3c56675496b"
-  integrity sha512-IFmLZCpFBcreTFEaH+Rn4BozUpFx3vvf43yWuXWdOvALz4ad18yU3Kzk9GxwzablrQxPFmJ43ClQG10dmoh/ig==
+"@salesforce/core@^5.3.1", "@salesforce/core@^5.3.17", "@salesforce/core@^5.3.5":
+  version "5.3.17"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-5.3.17.tgz#fe7e5b89bdfffc9c1634e0371fab6115b23fe312"
+  integrity sha512-3BYdpRwQrtaTNHINk+NSrXwlr0xZjKSkJWhMeryjGyTGf9YPRu1JNawl6PPbEpGCQp2y+NLUdp6vMy64jwIDBg==
   dependencies:
-    "@salesforce/kit" "^3.0.14"
+    "@salesforce/kit" "^3.0.15"
     "@salesforce/schemas" "^1.6.1"
-    "@salesforce/ts-types" "^2.0.8"
+    "@salesforce/ts-types" "^2.0.9"
     "@types/semver" "^7.5.3"
     ajv "^8.12.0"
     change-case "^4.1.2"
@@ -624,12 +624,12 @@
     typescript "^4.9.5"
     wireit "^0.14.1"
 
-"@salesforce/kit@^3.0.11", "@salesforce/kit@^3.0.13", "@salesforce/kit@^3.0.14":
-  version "3.0.14"
-  resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-3.0.14.tgz#b2231c856531eca86fa2d9779c7852c820d7c3ed"
-  integrity sha512-NkUlztz+ArRrUKexIxVOlBJxIovjCuyk3SbW7mQv2klwp/OH/HoR6PDZU0gxLBglum/Dd4BgB+HN2FNqg8jmoQ==
+"@salesforce/kit@^3.0.11", "@salesforce/kit@^3.0.13", "@salesforce/kit@^3.0.14", "@salesforce/kit@^3.0.15":
+  version "3.0.15"
+  resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-3.0.15.tgz#713df3f5767f874c70a2e731c7cb5ba677989559"
+  integrity sha512-XkA8jsuLvVnyP460dAbU3pBFP2IkmmmsVxMQVifcKKbNWaIBbZBzAfj+vdaQfnvZyflLhsrFT3q2xkb0vHouPg==
   dependencies:
-    "@salesforce/ts-types" "^2.0.8"
+    "@salesforce/ts-types" "^2.0.9"
     tslib "^2.6.2"
 
 "@salesforce/prettier-config@^0.0.3":
