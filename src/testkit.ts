@@ -577,7 +577,9 @@ const getDefaultUsername = async (): Promise<string> => {
   // eventually, drop the `key` option and the deprecated SfdxPropertyKeys
   const possibleKeys = [configVar, SfdxPropertyKeys.DEFAULT_USERNAME];
   const username = configResult?.find(
-    (r) => (r.key && possibleKeys.includes(r.key)) || (r.name && possibleKeys.includes(r.name))
+    (r) =>
+      (typeof r.key === 'string' && possibleKeys.includes(r.key)) ||
+      (typeof r.name === 'string' && possibleKeys.includes(r.name))
   )?.value;
   return username!;
 };
