@@ -1,3 +1,12 @@
+## [2.1.62](https://github.com/salesforcecli/source-testkit/compare/2.1.61...2.1.62) (2023-11-07)
+
+
+### Bug Fixes
+
+* don't require consumer to have plugin-settings installed ([#443](https://github.com/salesforcecli/source-testkit/issues/443)) ([3f725d9](https://github.com/salesforcecli/source-testkit/commit/3f725d93007241e4f4f640c3306871a3f0126da3))
+
+
+
 ## [2.1.61](https://github.com/salesforcecli/source-testkit/compare/2.1.60...2.1.61) (2023-11-04)
 
 
