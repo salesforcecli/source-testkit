@@ -571,8 +571,10 @@ export const COMMANDS = {
 
 const getDefaultUsername = async (): Promise<string> => {
   const configVar = 'target-org';
-  const configResult = execCmd<Array<{ key?: string; name?: string; value: string }>>(`config:get ${configVar} --json`)
-    .jsonOutput?.result;
+  const configResult = execCmd<Array<{ key?: string; name?: string; value: string }>>(
+    `config:get ${configVar} --json`,
+    { ensureExitCode: 0, cli: 'sf' }
+  ).jsonOutput?.result;
   // depending on which version of config:get the user has available, there may be a name or key
   // eventually, drop the `key` option and the deprecated SfdxPropertyKeys
   const possibleKeys = [configVar, SfdxPropertyKeys.DEFAULT_USERNAME];
