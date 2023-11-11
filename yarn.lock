@@ -532,22 +532,22 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@salesforce/cli-plugins-testkit@^4.4.8":
-  version "4.4.8"
-  resolved "https://registry.yarnpkg.com/@salesforce/cli-plugins-testkit/-/cli-plugins-testkit-4.4.8.tgz#0c4a7e371f319f63c27b23ba6b89e3341655ff87"
-  integrity sha512-8IuVupRX8APj9FEx8HjfRxYXeTrq78/Nstch2S6FhZXbDShzqBbVfQ3DVf2uDejxgU7rehah0mwcVyWYjTcBGA==
+"@salesforce/cli-plugins-testkit@^4.4.12":
+  version "4.4.12"
+  resolved "https://registry.yarnpkg.com/@salesforce/cli-plugins-testkit/-/cli-plugins-testkit-4.4.12.tgz#425132a4cd49b5aacb979df07af987b338ec00ae"
+  integrity sha512-k0jJYqB0PazmVyhNBau8FtJDa3+4EbhvD8F3u+yZ71jjPkp7YLKqtxfs1y7P3LCrmtel8JE3faHTfMaahdK96Q==
   dependencies:
-    "@salesforce/core" "^5.3.5"
-    "@salesforce/kit" "^3.0.13"
+    "@salesforce/core" "^5.3.10"
+    "@salesforce/kit" "^3.0.15"
     "@salesforce/ts-types" "^2.0.6"
-    "@types/shelljs" "^0.8.13"
+    "@types/shelljs" "^0.8.14"
     debug "^4.3.1"
     jszip "^3.10.1"
     shelljs "^0.8.4"
     strip-ansi "6.0.1"
     ts-retry-promise "^0.7.1"
 
-"@salesforce/core@^5.3.14", "@salesforce/core@^5.3.17", "@salesforce/core@^5.3.5":
+"@salesforce/core@^5.3.10", "@salesforce/core@^5.3.14", "@salesforce/core@^5.3.17":
   version "5.3.20"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-5.3.20.tgz#4e934d4551bb70423cb1c4115615bc41cffca41e"
   integrity sha512-y+O6O2c8OYFDrAy2qsG+pAcNxoyL14nmBXcBRRcYA7Huj8ikK+aLJK84PuVAYdQz+hNwImQF+69IWtDkpK4Irg==
@@ -607,7 +607,7 @@
     typescript "^4.9.5"
     wireit "^0.14.1"
 
-"@salesforce/kit@^3.0.13", "@salesforce/kit@^3.0.14", "@salesforce/kit@^3.0.15":
+"@salesforce/kit@^3.0.14", "@salesforce/kit@^3.0.15":
   version "3.0.15"
   resolved "https://registry.yarnpkg.com/@salesforce/kit/-/kit-3.0.15.tgz#713df3f5767f874c70a2e731c7cb5ba677989559"
   integrity sha512-XkA8jsuLvVnyP460dAbU3pBFP2IkmmmsVxMQVifcKKbNWaIBbZBzAfj+vdaQfnvZyflLhsrFT3q2xkb0vHouPg==
@@ -878,7 +878,7 @@
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.5.tgz#deed5ab7019756c9c90ea86139106b0346223f35"
   integrity sha512-+d+WYC1BxJ6yVOgUgzK8gWvp5qF8ssV5r4nsDcZWKRWcDQLQ619tvWAxJQYGgBrO1MnLJC7a5GtiYsAoQ47dJg==
 
-"@types/shelljs@^0.8.13", "@types/shelljs@^0.8.14":
+"@types/shelljs@^0.8.14":
   version "0.8.14"
   resolved "https://registry.yarnpkg.com/@types/shelljs/-/shelljs-0.8.14.tgz#87b8817b2397ffe97b86a4d844036ee0d2a1f0ca"
   integrity sha512-eqKaGPi60riuxI9pUVeCT02EGo94Y6HT119h7w5bXSELsis6+JqzdEy6H/w2xXl881wcN3VDnb/D0WlgSety5w==
