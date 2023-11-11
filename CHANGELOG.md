@@ -1,3 +1,12 @@
+## [2.1.64](https://github.com/salesforcecli/source-testkit/compare/2.1.63...2.1.64) (2023-11-11)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/cli-plugins-testkit from 4.4.8 to 4.4.12 ([#445](https://github.com/salesforcecli/source-testkit/issues/445)) ([7aa0ca2](https://github.com/salesforcecli/source-testkit/commit/7aa0ca24c6177c3fe7ab25db4416a5e6caa23ec7))
+
+
+
 ## [2.1.63](https://github.com/salesforcecli/source-testkit/compare/2.1.62...2.1.63) (2023-11-11)
 
 
