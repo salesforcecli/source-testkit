@@ -1,3 +1,12 @@
+## [2.1.66](https://github.com/salesforcecli/source-testkit/compare/2.1.65...2.1.66) (2023-11-25)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/core from 6.1.4 to 6.2.0 ([#452](https://github.com/salesforcecli/source-testkit/issues/452)) ([423e4a8](https://github.com/salesforcecli/source-testkit/commit/423e4a84d79f5fd617ee1c7c3dfb9ab4f8ccb80a))
+
+
+
 ## [2.1.65](https://github.com/salesforcecli/source-testkit/compare/2.1.64...2.1.65) (2023-11-14)
 
 
