@@ -1,3 +1,12 @@
+## [2.1.73](https://github.com/salesforcecli/source-testkit/compare/2.1.72...2.1.73) (2023-12-11)
+
+
+### Bug Fixes
+
+* allow nonZero exit code ([9555601](https://github.com/salesforcecli/source-testkit/commit/95556011b0f9a7127f4bb782160cc7127f827443))
+
+
+
 ## [2.1.72](https://github.com/salesforcecli/source-testkit/compare/2.1.71...2.1.72) (2023-12-10)
 
 
