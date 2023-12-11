@@ -540,7 +540,7 @@ export namespace SourceTestkit {
   };
 
   export type CommandOpts = {
-    exitCode: number;
+    exitCode: number | 'nonZero';
     args: string;
     json: boolean;
     cli: CLI;

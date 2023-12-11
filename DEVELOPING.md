@@ -36,7 +36,7 @@ This tests the typescript using ts-node.
 
 ### `yarn docs`
 
-This generates documentation into [docs](docs).
+This generates documentation into the `docs` directory.
 
 ### `yarn lint`
 

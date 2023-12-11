@@ -1,7 +1,7 @@
 ## Contributing
 
 1. The [DEVELOPING](DEVELOPING.md) doc has details on how to set up your environment.
-1. Familiarize yourself with the codebase by reading the [docs](docs), which you can generate locally by running `yarn docs`.
+1. Familiarize yourself with the codebase by reading the docs, which you can generate locally by running `yarn docs`.
 1. Create a new issue before starting your project so that we can keep track of
    what you are trying to add/fix. That way, we can also offer suggestions or
    let you know if there is already an effort in progress.
@@ -35,7 +35,7 @@ Agreement. You can do so by going to https://cla.salesforce.com/sign-cla.
 ## Pull Requests
 
 - Develop features and bug fixes in _topic_ branches.
-- _Topic_ branches can live in forks (external contributors) or within this repository (committers).  
+- _Topic_ branches can live in forks (external contributors) or within this repository (committers).
   \*\* When creating _topic_ branches in this repository please prefix with `<developer-name>/`.
 
 ### Merging Pull Requests

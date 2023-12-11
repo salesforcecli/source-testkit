@@ -24,7 +24,7 @@ Specifically, [`SourceTestKit`](src/testkit.ts) provides the following convenien
    sourceTestkit.deploy({ args: `--sourcepath force-app` });
    sourceTestkit.expect.filesToBeDeployed('force-app/**/*');
    ```
-   **NOTE** When providing files paths to these assertion methods, you need to provide a [glob pattern](https://github.com/mrmlnc/fast-glob#pattern-syntax), NOT an OS specific file path. We have chosen this approach because it provides a lot of flexibilty when writing tests and because it's OS agnostic.
+   **NOTE** When providing files paths to these assertion methods, you need to provide a [glob pattern](https://github.com/mrmlnc/fast-glob#pattern-syntax), NOT an OS specific file path. We have chosen this approach because it provides a lot of flexibility when writing tests and because it's OS agnostic.
 
 # Usage
 
