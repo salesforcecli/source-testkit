@@ -1,3 +1,12 @@
+## [2.1.83](https://github.com/salesforcecli/source-testkit/compare/2.1.82...2.1.83) (2024-01-06)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/core from 6.4.2 to 6.4.4 ([#473](https://github.com/salesforcecli/source-testkit/issues/473)) ([1093768](https://github.com/salesforcecli/source-testkit/commit/1093768542ce3184eef2a82b4e42cd0ad06be1bf))
+
+
+
 ## [2.1.82](https://github.com/salesforcecli/source-testkit/compare/2.1.81...2.1.82) (2024-01-06)
 
 
