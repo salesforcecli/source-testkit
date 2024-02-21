@@ -1,3 +1,12 @@
+## [2.1.97](https://github.com/salesforcecli/source-testkit/compare/2.1.96...2.1.97) (2024-02-21)
+
+
+### Bug Fixes
+
+* **deps:** bump ip from 1.1.8 to 1.1.9 ([#490](https://github.com/salesforcecli/source-testkit/issues/490)) ([54ce646](https://github.com/salesforcecli/source-testkit/commit/54ce646d79ccf0761bc5015b37ee1bad018e225c))
+
+
+
 ## [2.1.96](https://github.com/salesforcecli/source-testkit/compare/2.1.95...2.1.96) (2024-02-17)
 
 
