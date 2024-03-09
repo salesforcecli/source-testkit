@@ -1,3 +1,12 @@
+## [2.1.102](https://github.com/salesforcecli/source-testkit/compare/2.1.101...2.1.102) (2024-03-09)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/source-deploy-retrieve from 10.5.0 to 10.5.1 ([#499](https://github.com/salesforcecli/source-testkit/issues/499)) ([e741b28](https://github.com/salesforcecli/source-testkit/commit/e741b280578efac678f19616fb0befb5bcb291c0))
+
+
+
 ## [2.1.101](https://github.com/salesforcecli/source-testkit/compare/2.1.100...2.1.101) (2024-03-02)
 
 
