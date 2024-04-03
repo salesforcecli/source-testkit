@@ -6,8 +6,7 @@
  */
 import * as fs from 'node:fs';
 import * as path from 'node:path';
-import { expect, use } from 'chai';
-import * as chaiEach from 'chai-each';
+import { expect } from 'chai';
 import { JsonMap, Nullable } from '@salesforce/ts-types';
 import * as fg from 'fast-glob';
 import { Connection } from '@salesforce/core';
@@ -16,8 +15,6 @@ import { debug, Debugger } from 'debug';
 import { ApexClass, ApexTestResult, Commands, Context, SourceMember, SourceState, StatusResult } from './types';
 import { ExecutionLog } from './executionLog';
 import { countFiles, FileTracker } from './fileTracker';
-
-use(chaiEach);
 
 /* eslint-disable no-await-in-loop */
 
