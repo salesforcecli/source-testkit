@@ -1,3 +1,12 @@
+# [2.2.0](https://github.com/salesforcecli/source-testkit/compare/2.1.114...2.2.0) (2024-04-10)
+
+
+### Features
+
+* core7 ([#518](https://github.com/salesforcecli/source-testkit/issues/518)) ([39ceed9](https://github.com/salesforcecli/source-testkit/commit/39ceed90bbff1f90a03b14809c4b6a221a7061f1))
+
+
+
 ## [2.1.114](https://github.com/salesforcecli/source-testkit/compare/2.1.113...2.1.114) (2024-04-06)
 
 
