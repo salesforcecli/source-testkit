@@ -1,3 +1,12 @@
+## [2.2.1](https://github.com/salesforcecli/source-testkit/compare/2.2.0...2.2.1) (2024-04-11)
+
+
+### Bug Fixes
+
+* not esm, so use non-esm chai ([#519](https://github.com/salesforcecli/source-testkit/issues/519)) ([a838219](https://github.com/salesforcecli/source-testkit/commit/a838219cd13d77fbb438cac044edc0b4d0071098))
+
+
+
 # [2.2.0](https://github.com/salesforcecli/source-testkit/compare/2.1.114...2.2.0) (2024-04-10)
 
 
