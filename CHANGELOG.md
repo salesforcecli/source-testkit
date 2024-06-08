@@ -1,3 +1,12 @@
+## [2.2.26](https://github.com/salesforcecli/source-testkit/compare/2.2.25...2.2.26) (2024-06-08)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/core from 7.3.9 to 7.3.12 ([#546](https://github.com/salesforcecli/source-testkit/issues/546)) ([bef429c](https://github.com/salesforcecli/source-testkit/commit/bef429c1f86fdf68ea3943a06c51c78b46fc928a))
+
+
+
 ## [2.2.25](https://github.com/salesforcecli/source-testkit/compare/2.2.24...2.2.25) (2024-06-08)
 
 
