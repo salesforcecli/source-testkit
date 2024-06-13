@@ -1,3 +1,12 @@
+## [2.2.27](https://github.com/salesforcecli/source-testkit/compare/2.2.26...2.2.27) (2024-06-13)
+
+
+### Bug Fixes
+
+* **deps:** bump braces from 3.0.2 to 3.0.3 ([#551](https://github.com/salesforcecli/source-testkit/issues/551)) ([43848b4](https://github.com/salesforcecli/source-testkit/commit/43848b4229cd3f8dc8ad066157a74df4f5486580))
+
+
+
 ## [2.2.26](https://github.com/salesforcecli/source-testkit/compare/2.2.25...2.2.26) (2024-06-08)
 
 
