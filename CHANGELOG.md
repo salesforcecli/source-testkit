@@ -1,3 +1,12 @@
+## [2.2.33](https://github.com/salesforcecli/source-testkit/compare/2.2.32...2.2.33) (2024-06-20)
+
+
+### Bug Fixes
+
+* core8 ([#558](https://github.com/salesforcecli/source-testkit/issues/558)) ([e60c9e6](https://github.com/salesforcecli/source-testkit/commit/e60c9e62317e6e5db049a4d34ecdd301ba77d9c1))
+
+
+
 ## [2.2.32](https://github.com/salesforcecli/source-testkit/compare/2.2.31...2.2.32) (2024-06-16)
 
 
