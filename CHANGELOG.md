@@ -1,3 +1,12 @@
+## [2.2.43](https://github.com/salesforcecli/source-testkit/compare/2.2.42...2.2.43) (2024-07-27)
+
+
+### Bug Fixes
+
+* **deps:** bump chai from 4.4.1 to 4.5.0 ([#571](https://github.com/salesforcecli/source-testkit/issues/571)) ([eb73196](https://github.com/salesforcecli/source-testkit/commit/eb7319626dd5eed82d8a8b3ddf9ed7f6eff9b6ec))
+
+
+
 ## [2.2.42](https://github.com/salesforcecli/source-testkit/compare/2.2.41...2.2.42) (2024-07-27)
 
 
