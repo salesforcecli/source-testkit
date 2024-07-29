@@ -8,9 +8,9 @@ import * as fs from 'node:fs';
 import * as path from 'node:path';
 import { expect } from 'chai';
 import { JsonMap, Nullable } from '@salesforce/ts-types';
-import * as fg from 'fast-glob';
+import fg from 'fast-glob';
 import { Connection } from '@salesforce/core';
-import { FileResponse, MetadataResolver } from '@salesforce/source-deploy-retrieve';
+import { FileResponseSuccess, MetadataResolver } from '@salesforce/source-deploy-retrieve';
 import { debug, Debugger } from 'debug';
 import { ApexClass, ApexTestResult, Commands, Context, SourceMember, SourceState, StatusResult } from './types';
 import { ExecutionLog } from './executionLog';
@@ -120,7 +120,7 @@ export class Assertions {
   public async filesToBeDeployedViaResult(
     globs: string[],
     ignore: string[] = [],
-    result: FileResponse[]
+    result: FileResponseSuccess[]
   ): Promise<void> {
     const all = await this.doGlob(globs);
     const ignoreFiles = await this.doGlob(ignore, false);

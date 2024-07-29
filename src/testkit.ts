@@ -11,7 +11,7 @@
 import * as path from 'node:path';
 import * as os from 'node:os';
 import * as fs from 'node:fs';
-import * as fg from 'fast-glob';
+import fg from 'fast-glob';
 import { exec, find, mv, rm } from 'shelljs';
 import { CLI, execCmd, ScratchOrgConfig, TestSession } from '@salesforce/cli-plugins-testkit';
 import { AsyncCreatable, Env, parseJsonMap, set } from '@salesforce/kit';
