@@ -1,3 +1,7 @@
+## [2.2.45](https://github.com/salesforcecli/source-testkit/compare/2.2.44...2.2.45) (2024-07-29)
+
+
+
 ## [2.2.44](https://github.com/salesforcecli/source-testkit/compare/2.2.43...2.2.44) (2024-07-27)
 
 
