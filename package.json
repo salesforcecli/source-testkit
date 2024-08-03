@@ -39,7 +39,7 @@
     "@salesforce/source-deploy-retrieve": "^12.1.11",
     "@salesforce/ts-types": "^2.0.12",
     "chai": "^4.5.0",
-    "debug": "^4.3.5",
+    "debug": "^4.3.6",
     "fast-glob": "^3.3.2",
     "shelljs": "^0.8.4",
     "sinon": "^10.0.0"
