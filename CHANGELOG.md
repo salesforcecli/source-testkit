@@ -1,3 +1,12 @@
+## [2.2.49](https://github.com/salesforcecli/source-testkit/compare/2.2.48...2.2.49) (2024-08-03)
+
+
+### Bug Fixes
+
+* **deps:** bump debug from 4.3.5 to 4.3.6 ([#577](https://github.com/salesforcecli/source-testkit/issues/577)) ([9e44577](https://github.com/salesforcecli/source-testkit/commit/9e44577e3d3e34235ed8f0cb978acbbce5a70558))
+
+
+
 ## [2.2.48](https://github.com/salesforcecli/source-testkit/compare/2.2.47...2.2.48) (2024-08-03)
 
 
