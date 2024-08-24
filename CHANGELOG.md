@@ -1,3 +1,12 @@
+## [2.2.59](https://github.com/salesforcecli/source-testkit/compare/2.2.58...2.2.59) (2024-08-24)
+
+
+### Bug Fixes
+
+* **deps:** bump micromatch from 4.0.4 to 4.0.8 ([#591](https://github.com/salesforcecli/source-testkit/issues/591)) ([312d33f](https://github.com/salesforcecli/source-testkit/commit/312d33f4cd78682465921c350fcdee29cfa2678f))
+
+
+
 ## [2.2.58](https://github.com/salesforcecli/source-testkit/compare/2.2.57...2.2.58) (2024-08-24)
 
 
