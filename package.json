@@ -33,7 +33,7 @@
     "!lib/**/*.map"
   ],
   "dependencies": {
-    "@salesforce/cli-plugins-testkit": "^5.3.33",
+    "@salesforce/cli-plugins-testkit": "^5.3.34",
     "@salesforce/core": "^8.6.2",
     "@salesforce/kit": "^3.2.3",
     "@salesforce/source-deploy-retrieve": "^12.8.0",
