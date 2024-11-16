@@ -1,3 +1,12 @@
+## [2.2.88](https://github.com/salesforcecli/source-testkit/compare/2.2.87...2.2.88) (2024-11-16)
+
+
+### Bug Fixes
+
+* **deps:** bump cross-spawn from 7.0.3 to 7.0.5 ([#620](https://github.com/salesforcecli/source-testkit/issues/620)) ([8fde7d4](https://github.com/salesforcecli/source-testkit/commit/8fde7d4e3f0dec5c2c6dfe7924167940b4effbab))
+
+
+
 ## [2.2.87](https://github.com/salesforcecli/source-testkit/compare/2.2.86...2.2.87) (2024-11-16)
 
 
