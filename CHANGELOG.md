@@ -1,3 +1,12 @@
+## [2.2.96](https://github.com/salesforcecli/source-testkit/compare/2.2.95...2.2.96) (2025-01-11)
+
+
+### Bug Fixes
+
+* **deps:** bump fast-glob from 3.3.2 to 3.3.3 ([#628](https://github.com/salesforcecli/source-testkit/issues/628)) ([2cbe21b](https://github.com/salesforcecli/source-testkit/commit/2cbe21b899add2e2bb1adf3ba3e7b20715a57678))
+
+
+
 ## [2.2.95](https://github.com/salesforcecli/source-testkit/compare/2.2.94...2.2.95) (2025-01-11)
 
 
