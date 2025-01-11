@@ -40,7 +40,7 @@
     "@salesforce/ts-types": "^2.0.12",
     "chai": "^4.5.0",
     "debug": "^4.4.0",
-    "fast-glob": "^3.3.2",
+    "fast-glob": "^3.3.3",
     "shelljs": "^0.8.4",
     "sinon": "^10.0.0"
   },
