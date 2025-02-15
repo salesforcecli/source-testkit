@@ -36,7 +36,7 @@
     "@salesforce/cli-plugins-testkit": "^5.3.39",
     "@salesforce/core": "^8.8.2",
     "@salesforce/kit": "^3.2.3",
-    "@salesforce/source-deploy-retrieve": "^12.14.5",
+    "@salesforce/source-deploy-retrieve": "^12.15.0",
     "@salesforce/ts-types": "^2.0.12",
     "chai": "^4.5.0",
     "debug": "^4.4.0",
