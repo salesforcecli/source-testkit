@@ -3,7 +3,7 @@
   "description": "testkit for running NUTs for source related commands",
   "version": "2.2.116",
   "author": "Salesforce",
-  "license": "BSD-3-Clause",
+  "license": "Apache-2.0",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": "salesforcecli/source-testkit",
@@ -14,6 +14,7 @@
     "compile": "wireit",
     "copy-metadata": "copyfiles -u 1 'src/metadata/**/*' 'lib/metadata'",
     "docs": "sf-docs",
+    "fix-license": "eslint src test --fix --rule \"header/header: [2]\"",
     "format": "wireit",
     "link-check": "wireit",
     "lint": "wireit",
@@ -45,7 +46,7 @@
     "sinon": "^10.0.0"
   },
   "devDependencies": {
-    "@salesforce/dev-scripts": "^10.2.12",
+    "@salesforce/dev-scripts": "^11.0.1",
     "@types/debug": "^4.1.12",
     "@types/shelljs": "^0.8.15",
     "copyfiles": "^2.4.1",

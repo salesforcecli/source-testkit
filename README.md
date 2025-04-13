@@ -1,4 +1,4 @@
-[![NPM](https://img.shields.io/npm/v/@salesforce/source-testkit.svg?label=@salesforce/source-testkit)](https://www.npmjs.com/package/@salesforce/source-testkit) [![Downloads/week](https://img.shields.io/npm/dw/@salesforce/source-testkit.svg)](https://npmjs.org/package/@salesforce/source-testkit) [![License](https://img.shields.io/badge/License-BSD%203--Clause-brightgreen.svg)](https://raw.githubusercontent.com/salesforcecli/source-testkit/main/LICENSE.txt)
+[![NPM](https://img.shields.io/npm/v/@salesforce/source-testkit.svg?label=@salesforce/source-testkit)](https://www.npmjs.com/package/@salesforce/source-testkit) [![Downloads/week](https://img.shields.io/npm/dw/@salesforce/source-testkit.svg)](https://npmjs.org/package/@salesforce/source-testkit) [![License](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](https://opensource.org/license/apache-2-0)
 
 # Description
 
