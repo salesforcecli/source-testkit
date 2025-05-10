@@ -1,3 +1,12 @@
+## [2.2.123](https://github.com/salesforcecli/source-testkit/compare/2.2.122...2.2.123) (2025-05-10)
+
+
+### Bug Fixes
+
+* **deps:** bump shelljs from 0.9.2 to 0.10.0 ([#657](https://github.com/salesforcecli/source-testkit/issues/657)) ([0c6e05a](https://github.com/salesforcecli/source-testkit/commit/0c6e05a5705099f78ee2050d08c3d79b4b91d000))
+
+
+
 ## [2.2.122](https://github.com/salesforcecli/source-testkit/compare/2.2.121...2.2.122) (2025-05-10)
 
 
