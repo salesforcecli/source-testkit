@@ -1,3 +1,12 @@
+## [2.2.121](https://github.com/salesforcecli/source-testkit/compare/2.2.120...2.2.121) (2025-05-10)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/core from 8.10.1 to 8.10.3 ([#659](https://github.com/salesforcecli/source-testkit/issues/659)) ([df06a42](https://github.com/salesforcecli/source-testkit/commit/df06a4283c73a1705cfe92d4b23ee9ef89184f3c))
+
+
+
 ## [2.2.120](https://github.com/salesforcecli/source-testkit/compare/2.2.119...2.2.120) (2025-05-03)
 
 

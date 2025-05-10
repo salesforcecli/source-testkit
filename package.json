@@ -1,7 +1,7 @@
 {
   "name": "@salesforce/source-testkit",
   "description": "testkit for running NUTs for source related commands",
-  "version": "2.2.120",
+  "version": "2.2.121",
   "author": "Salesforce",
   "license": "Apache-2.0",
   "main": "lib/index.js",
