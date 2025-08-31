@@ -46,7 +46,7 @@
     "sinon": "^10.0.0"
   },
   "devDependencies": {
-    "@salesforce/dev-scripts": "^11.0.3",
+    "@salesforce/dev-scripts": "^11.0.4",
     "@types/debug": "^4.1.12",
     "@types/shelljs": "^0.8.17",
     "copyfiles": "^2.4.1",
