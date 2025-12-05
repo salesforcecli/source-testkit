@@ -1,3 +1,12 @@
+## [2.2.169](https://github.com/salesforcecli/source-testkit/compare/2.2.168...2.2.169) (2025-12-05)
+
+
+### Bug Fixes
+
+* **deps:** bump jws from 3.2.2 to 3.2.3 ([#709](https://github.com/salesforcecli/source-testkit/issues/709)) ([838cac8](https://github.com/salesforcecli/source-testkit/commit/838cac879ae5b19c045ce5b16ce50ae24a446a1a))
+
+
+
 ## [2.2.168](https://github.com/salesforcecli/source-testkit/compare/2.2.167...2.2.168) (2025-11-29)
 
 
