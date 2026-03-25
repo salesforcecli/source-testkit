@@ -1,3 +1,12 @@
+## [2.2.178](https://github.com/salesforcecli/source-testkit/compare/2.2.177...2.2.178) (2026-03-25)
+
+
+### Bug Fixes
+
+* **deps:** bump @isaacs/brace-expansion from 5.0.0 to 5.0.1 ([#721](https://github.com/salesforcecli/source-testkit/issues/721)) ([ada20b7](https://github.com/salesforcecli/source-testkit/commit/ada20b7f34ecfe22b6eb0e1f37c06e7b5dd2a338))
+
+
+
 ## [2.2.177](https://github.com/salesforcecli/source-testkit/compare/2.2.176...2.2.177) (2026-03-25)
 
 
