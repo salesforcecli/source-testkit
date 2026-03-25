@@ -1,3 +1,13 @@
+## [2.2.175](https://github.com/salesforcecli/source-testkit/compare/2.2.174...2.2.175) (2026-03-25)
+
+
+### Bug Fixes
+
+* **deps:** bump basic-ftp from 5.0.3 to 5.2.0 ([#728](https://github.com/salesforcecli/source-testkit/issues/728)) ([4f2bc40](https://github.com/salesforcecli/source-testkit/commit/4f2bc408015f7984903d3bea7bb861cdf7085e98))
+* **deps:** bump lodash from 4.17.21 to 4.17.23 ([#717](https://github.com/salesforcecli/source-testkit/issues/717)) ([7db8db6](https://github.com/salesforcecli/source-testkit/commit/7db8db67b44b03591a00054f0917f8897dcec907))
+
+
+
 ## [2.2.174](https://github.com/salesforcecli/source-testkit/compare/2.2.173...2.2.174) (2026-03-25)
 
 
