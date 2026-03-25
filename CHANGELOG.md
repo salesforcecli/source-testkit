@@ -1,3 +1,12 @@
+## [2.2.173](https://github.com/salesforcecli/source-testkit/compare/2.2.172...2.2.173) (2026-03-25)
+
+
+### Bug Fixes
+
+* fixed linting error @W-21652859@ ([#731](https://github.com/salesforcecli/source-testkit/issues/731)) ([3da6aa6](https://github.com/salesforcecli/source-testkit/commit/3da6aa6e22672f550efd4024ca679346bf099197))
+
+
+
 ## [2.2.172](https://github.com/salesforcecli/source-testkit/compare/2.2.171...2.2.172) (2025-12-13)
 
 
