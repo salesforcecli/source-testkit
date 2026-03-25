@@ -1,3 +1,12 @@
+## [2.2.174](https://github.com/salesforcecli/source-testkit/compare/2.2.173...2.2.174) (2026-03-25)
+
+
+### Bug Fixes
+
+* **deps:** bump flatted from 3.1.1 to 3.4.2 ([#730](https://github.com/salesforcecli/source-testkit/issues/730)) ([067fefc](https://github.com/salesforcecli/source-testkit/commit/067fefc8053133661f657b2af760009baffa453c))
+
+
+
 ## [2.2.173](https://github.com/salesforcecli/source-testkit/compare/2.2.172...2.2.173) (2026-03-25)
 
 
