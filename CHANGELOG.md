@@ -1,3 +1,12 @@
+## [2.2.179](https://github.com/salesforcecli/source-testkit/compare/2.2.178...2.2.179) (2026-03-27)
+
+
+### Bug Fixes
+
+* **deps:** bump yaml from 2.8.1 to 2.8.3 ([#732](https://github.com/salesforcecli/source-testkit/issues/732)) ([d6720ab](https://github.com/salesforcecli/source-testkit/commit/d6720ab165a2a247535d1c91fb20692883dcb8bd))
+
+
+
 ## [2.2.178](https://github.com/salesforcecli/source-testkit/compare/2.2.177...2.2.178) (2026-03-25)
 
 
