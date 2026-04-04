@@ -1,3 +1,12 @@
+## [2.2.184](https://github.com/salesforcecli/source-testkit/compare/2.2.183...2.2.184) (2026-04-04)
+
+
+### Bug Fixes
+
+* **deps:** bump lodash from 4.17.23 to 4.18.1 ([#740](https://github.com/salesforcecli/source-testkit/issues/740)) ([6386676](https://github.com/salesforcecli/source-testkit/commit/638667600b0bccdd4d24e6ebb6c34df02bf9be67))
+
+
+
 ## [2.2.183](https://github.com/salesforcecli/source-testkit/compare/2.2.182...2.2.183) (2026-04-04)
 
 
