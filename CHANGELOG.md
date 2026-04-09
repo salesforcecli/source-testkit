@@ -1,3 +1,12 @@
+## [2.2.187](https://github.com/salesforcecli/source-testkit/compare/2.2.186...2.2.187) (2026-04-09)
+
+
+### Bug Fixes
+
+* **deps:** bump basic-ftp from 5.2.0 to 5.2.1 ([#741](https://github.com/salesforcecli/source-testkit/issues/741)) ([4804a4a](https://github.com/salesforcecli/source-testkit/commit/4804a4a89251de97a3dd4b4635c0f0a200ec7ef2))
+
+
+
 ## [2.2.186](https://github.com/salesforcecli/source-testkit/compare/2.2.185...2.2.186) (2026-04-04)
 
 
