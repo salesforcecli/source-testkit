@@ -1,3 +1,12 @@
+## [2.2.188](https://github.com/salesforcecli/source-testkit/compare/2.2.187...2.2.188) (2026-04-11)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/cli-plugins-testkit from 5.3.50 to 5.3.52 ([#744](https://github.com/salesforcecli/source-testkit/issues/744)) ([c148209](https://github.com/salesforcecli/source-testkit/commit/c148209d4163ef3c8594b21a9e2b4bbddcbd1d0c))
+
+
+
 ## [2.2.187](https://github.com/salesforcecli/source-testkit/compare/2.2.186...2.2.187) (2026-04-09)
 
 
