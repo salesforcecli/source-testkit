@@ -1,3 +1,12 @@
+## [2.2.205](https://github.com/salesforcecli/source-testkit/compare/2.2.204...2.2.205) (2026-05-09)
+
+
+### Bug Fixes
+
+* **deps:** bump fast-xml-builder from 1.1.5 to 1.2.0 ([#756](https://github.com/salesforcecli/source-testkit/issues/756)) ([41ab20e](https://github.com/salesforcecli/source-testkit/commit/41ab20e88041dec6b83a532c98de5b42815ef644))
+
+
+
 ## [2.2.204](https://github.com/salesforcecli/source-testkit/compare/2.2.203...2.2.204) (2026-05-09)
 
 
