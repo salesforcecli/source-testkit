@@ -1,3 +1,12 @@
+## [2.2.212](https://github.com/salesforcecli/source-testkit/compare/2.2.211...2.2.212) (2026-06-06)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/source-deploy-retrieve ([#767](https://github.com/salesforcecli/source-testkit/issues/767)) ([e3c25be](https://github.com/salesforcecli/source-testkit/commit/e3c25bee7f3713780e7764aa7feeb2077533b9f6))
+
+
+
 ## [2.2.211](https://github.com/salesforcecli/source-testkit/compare/2.2.210...2.2.211) (2026-05-30)
 
 
