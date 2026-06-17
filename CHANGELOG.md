@@ -1,3 +1,12 @@
+## [2.2.215](https://github.com/salesforcecli/source-testkit/compare/2.2.214...2.2.215) (2026-06-17)
+
+
+### Bug Fixes
+
+* **deps:** bump @babel/core from 7.25.2 to 7.29.7 ([#771](https://github.com/salesforcecli/source-testkit/issues/771)) ([46149de](https://github.com/salesforcecli/source-testkit/commit/46149de41aca1864f53fa8de982ddff0689c883d))
+
+
+
 ## [2.2.214](https://github.com/salesforcecli/source-testkit/compare/2.2.213...2.2.214) (2026-06-17)
 
 
