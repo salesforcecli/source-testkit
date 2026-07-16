@@ -1,3 +1,12 @@
+## [2.2.227](https://github.com/salesforcecli/source-testkit/compare/2.2.226...2.2.227) (2026-07-16)
+
+
+### Bug Fixes
+
+* **deps:** bump websocket-driver from 0.7.4 to 0.7.5 ([#782](https://github.com/salesforcecli/source-testkit/issues/782)) ([a87090a](https://github.com/salesforcecli/source-testkit/commit/a87090a6c5ad05f4ea1d7cac0c41643f16e93d34))
+
+
+
 ## [2.2.226](https://github.com/salesforcecli/source-testkit/compare/2.2.225...2.2.226) (2026-07-11)
 
 
