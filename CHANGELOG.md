@@ -1,3 +1,12 @@
+## [2.2.230](https://github.com/salesforcecli/source-testkit/compare/2.2.229...2.2.230) (2026-07-24)
+
+
+### Bug Fixes
+
+* **deps:** bump linkify-it from 5.0.1 to 5.0.2 ([#785](https://github.com/salesforcecli/source-testkit/issues/785)) ([242bd73](https://github.com/salesforcecli/source-testkit/commit/242bd7306bb59d113a65f65e80eaacfd6e98e1f7))
+
+
+
 ## [2.2.229](https://github.com/salesforcecli/source-testkit/compare/2.2.228...2.2.229) (2026-07-18)
 
 
