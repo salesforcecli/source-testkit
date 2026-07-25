@@ -1,3 +1,12 @@
+## [2.2.233](https://github.com/salesforcecli/source-testkit/compare/2.2.232...2.2.233) (2026-07-25)
+
+
+### Bug Fixes
+
+* **deps:** bump fast-uri from 3.1.2 to 3.1.4 ([#786](https://github.com/salesforcecli/source-testkit/issues/786)) ([f3c4f4b](https://github.com/salesforcecli/source-testkit/commit/f3c4f4b71e73b265cf9279ed7589cc97560d645b))
+
+
+
 ## [2.2.232](https://github.com/salesforcecli/source-testkit/compare/2.2.231...2.2.232) (2026-07-25)
 
 
