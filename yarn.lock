@@ -611,10 +611,10 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@salesforce/cli-plugins-testkit@^5.3.63":
-  version "5.3.63"
-  resolved "https://registry.yarnpkg.com/@salesforce/cli-plugins-testkit/-/cli-plugins-testkit-5.3.63.tgz#53bc98d052cd4a31d63b8db8fd105d66ba2228f3"
-  integrity sha512-zyFia5TKjJl0WwqJh4iusblbK7qKYbP+POWyBHgXpENwSTvs9iMO5MQFYGBTSRg2P5CJ5waPFdNw5sZtqUAp1A==
+"@salesforce/cli-plugins-testkit@^5.3.64":
+  version "5.3.64"
+  resolved "https://registry.yarnpkg.com/@salesforce/cli-plugins-testkit/-/cli-plugins-testkit-5.3.64.tgz#6c28fefc787f83096cb274e38fc855727ffa13f3"
+  integrity sha512-4jUPow+oOr2Jp3s3QKCS1Aw9qs9AV2sIuk3YvWz9gMd7Y3/wVROG4C5OelfnrClGocxDAOVaCgJrTSoF0VQzUg==
   dependencies:
     "@salesforce/core" "^8.31.2"
     "@salesforce/kit" "^3.2.6"
