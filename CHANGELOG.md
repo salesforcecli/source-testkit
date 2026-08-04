@@ -1,3 +1,12 @@
+## [2.2.235](https://github.com/salesforcecli/source-testkit/compare/2.2.234...2.2.235) (2026-08-04)
+
+
+### Bug Fixes
+
+* **deps:** bump ip-address from 10.2.0 to 10.4.0 ([#791](https://github.com/salesforcecli/source-testkit/issues/791)) ([f87bb1e](https://github.com/salesforcecli/source-testkit/commit/f87bb1e42c577b17da92a6f7d3929b3a43cbd3a5))
+
+
+
 ## [2.2.234](https://github.com/salesforcecli/source-testkit/compare/2.2.233...2.2.234) (2026-08-01)
 
 
