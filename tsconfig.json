@@ -2,7 +2,9 @@
   "extends": "@salesforce/dev-config/tsconfig-strict",
   "compilerOptions": {
     "outDir": "./lib",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "rootDir": "./src",
+    "types": ["node", "mocha"]
   },
   "include": ["src/**/*.ts"]
 }
