@@ -1,3 +1,12 @@
+## [2.2.241](https://github.com/salesforcecli/source-testkit/compare/2.2.240...2.2.241) (2026-10-09)
+
+
+### Bug Fixes
+
+* **deps:** bump source-map-js from 1.2.1 to 1.2.2 ([#809](https://github.com/salesforcecli/source-testkit/issues/809)) ([4446285](https://github.com/salesforcecli/source-testkit/commit/4446285b0f7c1665ce7529bc035d684c50d41ac1))
+
+
+
 ## [2.2.240](https://github.com/salesforcecli/source-testkit/compare/2.2.239...2.2.240) (2026-10-09)
 
 
