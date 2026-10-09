@@ -1,3 +1,12 @@
+## [2.2.240](https://github.com/salesforcecli/source-testkit/compare/2.2.239...2.2.240) (2026-10-09)
+
+
+### Bug Fixes
+
+* **deps:** bump fast-copy from 3.0.2 to 3.1.0 ([#810](https://github.com/salesforcecli/source-testkit/issues/810)) ([b2c3acb](https://github.com/salesforcecli/source-testkit/commit/b2c3acb3e4178198290bc381c0afb01924145d00))
+
+
+
 ## [2.2.239](https://github.com/salesforcecli/source-testkit/compare/2.2.238...2.2.239) (2026-10-02)
 
 
