@@ -1,3 +1,12 @@
+## [2.2.246](https://github.com/salesforcecli/source-testkit/compare/2.2.245...2.2.246) (2026-10-10)
+
+
+### Bug Fixes
+
+* **deps:** bump browserslist from 4.28.2 to 4.28.9 ([#800](https://github.com/salesforcecli/source-testkit/issues/800)) ([429dad1](https://github.com/salesforcecli/source-testkit/commit/429dad1c6fd3d427590b4db37ee5d0ce3f7462e0))
+
+
+
 ## [2.2.245](https://github.com/salesforcecli/source-testkit/compare/2.2.244...2.2.245) (2026-10-10)
 
 
