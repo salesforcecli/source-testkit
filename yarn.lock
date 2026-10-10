@@ -690,10 +690,10 @@
     ts-retry-promise "^0.8.1"
     zod "^4.1.12"
 
-"@salesforce/core@^9.1.10":
-  version "9.1.10"
-  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-9.1.10.tgz#a3a01455c33821f5f4af4f85ba09e4b18f55d194"
-  integrity sha512-0BRMIUHU21jOhK93tNEt9jtXaFnhwoNuRZynnVuuaNIogF5b2X8L6GYRXTqBHYPtX/MHqpKvAVMs6oMj3LcIpw==
+"@salesforce/core@^9.1.10", "@salesforce/core@^9.1.11":
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-9.2.0.tgz#3067352aebe614cd8f2d061763e8c7a5280eb182"
+  integrity sha512-kiyl1iblLF9oIVfZzDCbtl8n9BHCXDCq2Mrg3W9+AB5ds3tvJHEGiITxuqcfy8AecFnkc/rBpERjvEpZLwrJyQ==
   dependencies:
     "@jsforce/jsforce-node" "^3.10.24"
     "@salesforce/kit" "^4.0.0"
@@ -775,12 +775,12 @@
   resolved "https://registry.yarnpkg.com/@salesforce/prettier-config/-/prettier-config-0.0.4.tgz#fc84ea1585b2eb4bf156514911bac17b7f7e434c"
   integrity sha512-GBjR7f/jv7rcSrTvNgbkWvOykXg/PZqL7TztylKwaogWdrCbypJE8qEfBy9nILkICrwmDbQApOC8TqoO3bQKSw==
 
-"@salesforce/source-deploy-retrieve@^13.3.1":
-  version "13.3.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-13.3.1.tgz#8df59d36d1207e4a992b1cde35558e95c0c81e8a"
-  integrity sha512-wudw2XAZ9N2oNKpQncByMtzRTO5hDvQifLA4C2H8K/nqMrBe0Xw31kwWzFy34tWdXVCh2xE+47tT0yg6zx6e/w==
+"@salesforce/source-deploy-retrieve@^13.3.2":
+  version "13.3.2"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-13.3.2.tgz#be1478703525f11adae1929087bb6628b4fcf82f"
+  integrity sha512-BJ9YcCAG8NJ19GtJ0PvftTwJ36/M0MPxBw3yewvZlmNYq841uya8JeYjxNGvLD9VBaabXgE1gGVwdcO+QzbDxg==
   dependencies:
-    "@salesforce/core" "^9.1.10"
+    "@salesforce/core" "^9.1.11"
     "@salesforce/kit" "^4.0.0"
     "@salesforce/ts-types" "^3.2.0"
     "@salesforce/types" "^1.6.0"
