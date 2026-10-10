@@ -1,3 +1,12 @@
+## [2.2.243](https://github.com/salesforcecli/source-testkit/compare/2.2.242...2.2.243) (2026-10-10)
+
+
+### Bug Fixes
+
+* **deps:** bump undici from 8.10.0 to 8.11.2 ([#804](https://github.com/salesforcecli/source-testkit/issues/804)) ([96e85ff](https://github.com/salesforcecli/source-testkit/commit/96e85ffba88a14a359f749d62554cd33fca4d1b4))
+
+
+
 ## [2.2.242](https://github.com/salesforcecli/source-testkit/compare/2.2.241...2.2.242) (2026-10-09)
 
 
