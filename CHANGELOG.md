@@ -1,3 +1,12 @@
+## [2.2.250](https://github.com/salesforcecli/source-testkit/compare/2.2.249...2.2.250) (2026-10-22)
+
+
+### Bug Fixes
+
+* **deps:** bump markdown-it from 14.3.1 to 14.3.3 ([#815](https://github.com/salesforcecli/source-testkit/issues/815)) ([7432354](https://github.com/salesforcecli/source-testkit/commit/7432354fa6522667631b48feff795d6260fc8ae9))
+
+
+
 ## [2.2.249](https://github.com/salesforcecli/source-testkit/compare/2.2.248...2.2.249) (2026-10-17)
 
 
