@@ -1,3 +1,12 @@
+## [2.2.254](https://github.com/salesforcecli/source-testkit/compare/2.2.253...2.2.254) (2026-10-24)
+
+
+### Bug Fixes
+
+* **deps:** bump zod from 4.1.13 to 4.6.7 ([#821](https://github.com/salesforcecli/source-testkit/issues/821)) ([53bf83e](https://github.com/salesforcecli/source-testkit/commit/53bf83e03fffa8029c5116bdee800cfdd46717d8))
+
+
+
 ## [2.2.253](https://github.com/salesforcecli/source-testkit/compare/2.2.252...2.2.253) (2026-10-24)
 
 
