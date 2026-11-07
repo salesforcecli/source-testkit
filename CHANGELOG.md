@@ -1,3 +1,12 @@
+## [2.2.260](https://github.com/salesforcecli/source-testkit/compare/2.2.259...2.2.260) (2026-11-07)
+
+
+### Bug Fixes
+
+* **deps:** bump brace-expansion from 1.1.11 to 1.1.21 ([#832](https://github.com/salesforcecli/source-testkit/issues/832)) ([e980619](https://github.com/salesforcecli/source-testkit/commit/e98061906d1f1f1497df5bdb0ae750f6770b63f4))
+
+
+
 ## [2.2.259](https://github.com/salesforcecli/source-testkit/compare/2.2.258...2.2.259) (2026-11-01)
 
 
