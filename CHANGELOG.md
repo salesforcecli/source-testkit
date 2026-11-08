@@ -1,3 +1,12 @@
+## [2.2.262](https://github.com/salesforcecli/source-testkit/compare/2.2.261...2.2.262) (2026-11-08)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/kit from 4.0.8 to 4.0.9 ([#829](https://github.com/salesforcecli/source-testkit/issues/829)) ([0aeca21](https://github.com/salesforcecli/source-testkit/commit/0aeca219f99f2d892836d816f1bb0245e85b8573))
+
+
+
 ## [2.2.261](https://github.com/salesforcecli/source-testkit/compare/2.2.260...2.2.261) (2026-11-07)
 
 
