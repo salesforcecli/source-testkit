@@ -1,3 +1,12 @@
+## [2.2.266](https://github.com/salesforcecli/source-testkit/compare/2.2.265...2.2.266) (2026-11-12)
+
+
+### Bug Fixes
+
+* **deps:** bump picomatch from 2.3.1 to 2.3.2 ([#835](https://github.com/salesforcecli/source-testkit/issues/835)) ([6049798](https://github.com/salesforcecli/source-testkit/commit/60497982fe78bf0e28eced8b9e0043dc9ea4a007))
+
+
+
 ## [2.2.265](https://github.com/salesforcecli/source-testkit/compare/2.2.264...2.2.265) (2026-11-12)
 
 
