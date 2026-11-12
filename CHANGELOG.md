@@ -1,3 +1,12 @@
+## [2.2.264](https://github.com/salesforcecli/source-testkit/compare/2.2.263...2.2.264) (2026-11-12)
+
+
+### Bug Fixes
+
+* **deps:** bump fast-xml-parser from 5.8.0 to 5.12.0 ([#833](https://github.com/salesforcecli/source-testkit/issues/833)) ([7b430ab](https://github.com/salesforcecli/source-testkit/commit/7b430ab463fec1578150d011f7df0f13cfba3a24))
+
+
+
 ## [2.2.263](https://github.com/salesforcecli/source-testkit/compare/2.2.262...2.2.263) (2026-11-08)
 
 
