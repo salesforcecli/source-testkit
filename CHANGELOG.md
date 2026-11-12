@@ -1,3 +1,12 @@
+## [2.2.265](https://github.com/salesforcecli/source-testkit/compare/2.2.264...2.2.265) (2026-11-12)
+
+
+### Bug Fixes
+
+* **deps:** bump js-yaml from 3.14.1 to 3.15.2 ([#834](https://github.com/salesforcecli/source-testkit/issues/834)) ([7202690](https://github.com/salesforcecli/source-testkit/commit/7202690380fc9e904e77567a5d05f502ec471a46))
+
+
+
 ## [2.2.264](https://github.com/salesforcecli/source-testkit/compare/2.2.263...2.2.264) (2026-11-12)
 
 
