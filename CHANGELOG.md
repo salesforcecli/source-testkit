@@ -1,3 +1,12 @@
+## [2.2.268](https://github.com/salesforcecli/source-testkit/compare/2.2.267...2.2.268) (2026-11-13)
+
+
+### Bug Fixes
+
+* **deps:** bump path-to-regexp from 1.8.0 to 1.9.0 ([#837](https://github.com/salesforcecli/source-testkit/issues/837)) ([913b28e](https://github.com/salesforcecli/source-testkit/commit/913b28eff7132b3845378e7538070f47affcab39))
+
+
+
 ## [2.2.267](https://github.com/salesforcecli/source-testkit/compare/2.2.266...2.2.267) (2026-11-12)
 
 
