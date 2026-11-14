@@ -480,6 +480,11 @@
     wrap-ansi "^8.1.0"
     wrap-ansi-cjs "npm:wrap-ansi@^7.0.0"
 
+"@isaacs/nonrecursive-glob-match@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@isaacs/nonrecursive-glob-match/-/nonrecursive-glob-match-1.1.0.tgz#b1d69b8938aab4c292f7fde628c47dc1dbd737ef"
+  integrity sha512-GPm/Dbvk5RLmhRnxXIa7nTpK0xtl4E0wj0MslsuNiJ1FIROU+2+9lgUC/dgF7Ey4QCWhfEsgxilMRMCdHPfDfw==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -782,7 +787,7 @@
     strip-ansi "6.0.1"
     ts-retry-promise "^0.8.1"
 
-"@salesforce/core@^9.4.1", "@salesforce/core@^9.4.4", "@salesforce/core@^9.4.5":
+"@salesforce/core@^9.4.4", "@salesforce/core@^9.4.5":
   version "9.4.6"
   resolved "https://registry.yarnpkg.com/@salesforce/core/-/core-9.4.6.tgz#20a65181d477bffc9e5c0c9c2b5240881b7cd688"
   integrity sha512-ph6zETeGRegICHLbP5OjHqiry7RdWpCf+NihuIEsKYhqgcxkeOSEiuznlLm2F4lmo4/y61ogF5kOBAKwOK+ynQ==
@@ -860,35 +865,35 @@
   resolved "https://registry.yarnpkg.com/@salesforce/prettier-config/-/prettier-config-0.0.4.tgz#fc84ea1585b2eb4bf156514911bac17b7f7e434c"
   integrity sha512-GBjR7f/jv7rcSrTvNgbkWvOykXg/PZqL7TztylKwaogWdrCbypJE8qEfBy9nILkICrwmDbQApOC8TqoO3bQKSw==
 
-"@salesforce/source-deploy-retrieve@^13.11.0":
-  version "13.11.0"
-  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-13.11.0.tgz#56c85d2d38b8ead8116ffb209e7e17ca5a919070"
-  integrity sha512-3b66tBuAE5qq0tG5X/8JH+OPjTcqNxyLDUOltVqSM68/6lYBMlnZCxFWR1E8FfGekGNCRbr6JXeTPzFgwnbKQw==
+"@salesforce/source-deploy-retrieve@^13.12.0":
+  version "13.12.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/source-deploy-retrieve/-/source-deploy-retrieve-13.12.0.tgz#c9cf549f4383110294081ec81f8478496c007290"
+  integrity sha512-d9o8WIKlb48vXUGHrO2T0ASPAimVhldCIeSJtJdbZOSdzcJ+bvie3zO4gP7kBv8byvjCD9zBxzf8dFt9wkqeew==
   dependencies:
-    "@salesforce/core" "^9.4.1"
-    "@salesforce/kit" "^4.0.0"
-    "@salesforce/ts-types" "^3.2.0"
-    "@salesforce/types" "^1.6.0"
+    "@salesforce/core" "^9.4.4"
+    "@salesforce/kit" "^4.0.9"
+    "@salesforce/ts-types" "^3.2.4"
+    "@salesforce/types" "^1.9.0"
     fast-levenshtein "^3.0.0"
-    fast-xml-parser "^5.7.3"
+    fast-xml-parser "^5.12.0"
     got "^11.8.6"
     graceful-fs "^4.2.11"
     ignore "^5.3.2"
-    jszip "^3.10.1"
+    jszip "^3.10.2"
     mime "2.6.0"
-    minimatch "^9.0.9"
+    minimatch "^11.0.1"
     proxy-agent "^6.5.0"
-    yaml "^2.9.0"
+    yaml "^2.9.1"
 
 "@salesforce/ts-types@^3.2.0", "@salesforce/ts-types@^3.2.3", "@salesforce/ts-types@^3.2.4":
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/@salesforce/ts-types/-/ts-types-3.2.4.tgz#783db051f0f95a23647934efc521cf1ad31dcdbd"
   integrity sha512-kTzgXQbOdon0gJFwdHQ+A+UvMR/E3zzlj6O1Wyl5//waq7OSNjspB49y9LrZefIyqHV+ACfB9/aWBJ9aSKMrvQ==
 
-"@salesforce/types@^1.6.0":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@salesforce/types/-/types-1.7.1.tgz#8983f87508ac21bfb334fe650b7cafdfe4278cf8"
-  integrity sha512-PyV3ZyZum8bjO1LByNXWCSOGt1b9X9x2knIiFWgnYTsHmLK8OP+f6i+wPh4qu1e8+Zr+hNV0rTKVP8p/kCGqyQ==
+"@salesforce/types@^1.9.0":
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/@salesforce/types/-/types-1.9.0.tgz#2fe0099ff60278c849a34693fbfb9c449ddd7e9c"
+  integrity sha512-+VECX78jTYpeAHkv80C6uy86fbrNO/RplqxeLuasLV/rJF1NIYyFtrtAVqFlMvI8YwjQnyuprWOyzI8VF+Wi7g==
 
 "@shikijs/engine-oniguruma@^3.23.0":
   version "3.23.0"
@@ -1590,6 +1595,13 @@ brace-expansion@^2.0.1, brace-expansion@^2.0.2:
   integrity sha512-uZbew1NqdmPDTMJ8ah1y+b+9QEJrfkXFk3RcTQw3X0jW/xRUvFKsg1CfQdSYGdTbXZWExtU3J3ccxtnfw1Fi0g==
   dependencies:
     balanced-match "^1.0.0"
+
+brace-expansion@^5.0.12:
+  version "5.0.13"
+  resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-5.0.13.tgz#e2d4497370f7e385e6f96b57bd7ff11d77d85851"
+  integrity sha512-Vh3dmFbc4wZeox7M9I/0L9GfFd83Su4+yCck/OF9Gi/P/dAHn0RT7X4K9R7gMNMhDck3DvhR6QXsnQdjjgwNvQ==
+  dependencies:
+    balanced-match "^4.0.2"
 
 brace-expansion@^5.0.6, brace-expansion@^5.0.8:
   version "5.0.12"
@@ -2576,21 +2588,21 @@ fast-uri@^3.0.1:
   resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-3.1.9.tgz#f1deba822b1d6ac79da2f860e872a63470cff203"
   integrity sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ==
 
-fast-xml-builder@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/fast-xml-builder/-/fast-xml-builder-1.3.1.tgz#ef05b353b45597483dfb09d450a062a2baec3a82"
-  integrity sha512-pIM/1n3ntFXKYrUZwW7QCK0gAW7XY+wzj1YMIV3tLDvPj/V+zTGJK5e3/4WJfwj0qWw2ElNXiTixda/R+3YSug==
+fast-xml-builder@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/fast-xml-builder/-/fast-xml-builder-1.3.2.tgz#08837335066983b7659f342ce1559869c068192e"
+  integrity sha512-OX91VSlShLPDgRZV7tk/YQ4l8tT75QziF5Ixg8g4PFbCVPjuTWwN+yQfAxLJ0dufJpprdOd6HlM74Jhd39TcBQ==
   dependencies:
     path-expression-matcher "^1.6.2"
     xml-naming "^0.3.0"
 
-fast-xml-parser@^5.7.3:
-  version "5.12.0"
-  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-5.12.0.tgz#f8212b65fa5f7d227e67c387e874c7857751fa64"
-  integrity sha512-/pXxRBtwxY9w8z7YbgsvIPPcPvFDsTbIkWwTQJhzNJPokj+TbN6ftmcv4j/pEQDvOCNnKGDzuk5Bo2oogIOiFg==
+fast-xml-parser@^5.12.0:
+  version "5.12.1"
+  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-5.12.1.tgz#a0f3ebed7a1107db9456c0dd0ed233cbc00ae709"
+  integrity sha512-wR8dO/fx+z8C5exuem1e7BKOWvjsuzvjS/tvA/Xu3Z1zQqJGcXrPzXbcAiaMgp2KjreEROcTkmnnisrcmJ2hYQ==
   dependencies:
     "@nodable/entities" "^3.1.0"
-    fast-xml-builder "^1.3.1"
+    fast-xml-builder "^1.3.2"
     is-unsafe "^2.0.3"
     path-expression-matcher "^1.6.2"
     strnum "^2.5.1"
@@ -3498,7 +3510,7 @@ jszip@3.10.1:
     readable-stream "~2.3.6"
     setimmediate "^1.0.5"
 
-jszip@^3.10.1, jszip@^3.10.2:
+jszip@^3.10.2:
   version "3.10.2"
   resolved "https://registry.yarnpkg.com/jszip/-/jszip-3.10.2.tgz#9fee8cfaaffb601f6c8796ecc522e4f81cbe88bf"
   integrity sha512-3l+rb15IOWtUhU0H5MFqES/T6Kh7abYwjosBey/vD6hDt8zoEffkSC5Ws5SGtgVw3gBx2NEbhTeSW1+kWkpyTQ==
@@ -3935,6 +3947,14 @@ minimatch@^10.2.2, minimatch@^10.2.4, minimatch@^10.2.5, minimatch@^10.2.6, "min
   dependencies:
     brace-expansion "^5.0.8"
 
+minimatch@^11.0.1:
+  version "11.0.8"
+  resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-11.0.8.tgz#715fc3509cd7f76ed9af2f702a98411b1b0288c8"
+  integrity sha512-nFQuYSTVrGvysVBps5Ih+0BdnYFN/Cj3C816r6+p7yK+FHrVLGE4O4N9AFwykrlNlvM2HYt+Rad1Uiro6h88Ig==
+  dependencies:
+    "@isaacs/nonrecursive-glob-match" "^1.1.0"
+    brace-expansion "^5.0.12"
+
 minimatch@^3.0.3, minimatch@^3.0.4:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-3.1.2.tgz#19cd194bfd3e428f049a70817c038d89ab4be35b"
@@ -3949,7 +3969,7 @@ minimatch@^5.0.1, minimatch@^5.1.6:
   dependencies:
     brace-expansion "^2.0.1"
 
-minimatch@^9.0.1, minimatch@^9.0.9:
+minimatch@^9.0.1:
   version "9.0.9"
   resolved "https://registry.yarnpkg.com/minimatch/-/minimatch-9.0.9.tgz#9b0cb9fcb78087f6fd7eababe2511c4d3d60574e"
   integrity sha512-OBwBN9AL4dqmETlpS2zasx+vTeWclWzkblfZk7KTA5j3jeOONz/tRCnZomUyvNg83wL5Zv9Ss6HMJXAgL8R2Yg==
@@ -5726,10 +5746,10 @@ yallist@^4.0.0:
   resolved "https://registry.npmjs.org/yallist/-/yallist-4.0.0.tgz#9bb92790d9c0effec63be73519e11a35019a3a72"
   integrity sha512-3wdGidZyq5PB084XLES5TpOSRA3wjXAlIWMhum2kRcv/41Sn2emQ0dycQW4uZXLejwKvg6EsvbdlVL+FYEct7A==
 
-yaml@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.9.0.tgz#78274afd93598a1dfdd6130df6a566defcbf9aa4"
-  integrity sha512-2AvhNX3mb8zd6Zy7INTtSpl1F15HW6Wnqj0srWlkKLcpYl/gMIMJiyuGq2KeI2YFxUPjdlB+3Lc10seMLtL4cA==
+yaml@^2.9.0, yaml@^2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-2.9.1.tgz#c16233fb31944e705cfefaff38795587f57588ce"
+  integrity sha512-3NxN8+78OdzbT7C/WjGsyfPAtJaN3FNDsWxv7Y7mcDsT/oOmgW8BpyQQFFBnvZE3j9Y2Sdz1ULFLezL7Eb2yFw==
 
 yargs-parser@^18.1.2:
   version "18.1.3"
