@@ -1,3 +1,12 @@
+## [2.2.269](https://github.com/salesforcecli/source-testkit/compare/2.2.268...2.2.269) (2026-11-14)
+
+
+### Bug Fixes
+
+* **deps:** bump @salesforce/core from 9.4.4 to 9.4.5 ([#841](https://github.com/salesforcecli/source-testkit/issues/841)) ([3567d11](https://github.com/salesforcecli/source-testkit/commit/3567d1105b19f3a7fcd5cccf4d1764ad4377d292))
+
+
+
 ## [2.2.268](https://github.com/salesforcecli/source-testkit/compare/2.2.267...2.2.268) (2026-11-13)
 
 
