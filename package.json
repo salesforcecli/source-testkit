@@ -46,7 +46,7 @@
     "sinon": "^10.0.0"
   },
   "devDependencies": {
-    "@salesforce/dev-scripts": "^15.0.0",
+    "@salesforce/dev-scripts": "^15.0.1",
     "@types/chai": "^4.3.17",
     "@types/debug": "^4.1.13",
     "@types/mocha": "^10.0.10",
@@ -55,7 +55,7 @@
     "@types/sinon": "^10.0.20",
     "copyfiles": "^2.4.1",
     "eslint": "^10.14.0",
-    "eslint-config-salesforce-typescript": "^6.0.0",
+    "eslint-config-salesforce-typescript": "^6.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^6.0.0"
   },
